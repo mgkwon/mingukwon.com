@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-import './navigation/Navigation.jsx';
+import {NavBar} from "./components/NavBar";
+import {Profile} from "./components/Profile";
+import { Experiences } from './components/Experiences';
+import { Projects } from './components/Projects';
+import { Contact } from './components/Contact';
 
 class App extends Component {
   render() {
@@ -22,8 +26,11 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <div className="App-nav" />
-        <div className="App-front-page" />
+        <NavBar></NavBar>
+        <Profile></Profile>
+        <Experiences></Experiences>
+        <Projects></Projects>
+        <Contact></Contact>
       </div>
     );
   }
