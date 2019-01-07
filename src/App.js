@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-import {NavBar} from "./components/NavBar";
-import {Profile} from "./components/Profile";
+import { Router, Route, Link } from 'react-router'
+
+import { NavBar } from "./components/NavBar";
+import { Front } from "./components/Front";
+import { Profile } from "./components/Profile";
 import { Experiences } from './components/Experiences';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
@@ -26,11 +29,17 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <NavBar></NavBar>
-        <Profile></Profile>
-        <Experiences></Experiences>
-        <Projects></Projects>
-        <Contact></Contact>
+        {/* <Router>
+          <Route path="/">
+            <Route path="/profile" component={Profile} />
+          </Route>
+        </Router> */}
+          <NavBar></NavBar>
+          <Front></Front>
+          <Profile></Profile>
+          <Experiences></Experiences>
+          <Projects></Projects>
+          <Contact></Contact>
       </div>
     );
   }
