@@ -4,22 +4,22 @@ import Typing from 'react-typing-animation';
 export class Front extends Component {
   render() {
     return (
-      <div class="container" style={containerHeight_s}>
+      <div id="front" class="container" style={containerHeight_s}>
         {/* <div class="row">
 					<div class="col-sm-12" > */}
 						<div style={verticalCenter_s}>
-						<div class="row">
-							<Typing>
-								<span style={name_s}>MINGU KWON</span>
-							</Typing>
-						</div>
-						<div class="row">
-							<Typing>
-								<Typing.Delay ms={1000}/>
-								<span stlye={title_s}>Robotics Software Engineer</span>
-							</Typing>
-						</div>
-						</div>
+							<div class="row">
+								<Typing>
+									<span style={name_s}>MINGU KWON</span>
+								</Typing>
+							</div>
+							<div class="row">
+								<Typing>
+									<Typing.Delay ms={1000}/>
+									<span stlye={title_s}>Robotics Software Engineer</span>
+								</Typing>
+							</div>
+							</div>
 					{/* </div>
         </div> */}
       </div>
