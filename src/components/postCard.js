@@ -43,7 +43,7 @@ export default props => (
     <Link to={props.node.slug} className="post-card-link">
       <div className="post-card-content">
         <h2 className="post-card-title">
-          {props.node.title || props.node.fields.slug}
+          {props.node.title || props.node.slug}
         </h2>
       </div>
     </Link>
