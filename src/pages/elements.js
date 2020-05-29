@@ -135,28 +135,6 @@ const ElementsPage = ({ data }, location) => {
             faucibus vestibulum. Blandit adipiscing eu felis.
           </blockquote>
           <hr />
-          <h2 id="images">Images</h2>
-          <figure className="kg-card kg-image-card">
-            <Img
-              fluid={data.smallPic.childImageSharp.fluid}
-              className="kg-image"
-            />
-            <figcaption>Regular image</figcaption>
-          </figure>
-          <figure className="kg-card kg-image-card kg-width-wide">
-            <Img
-              fluid={data.medPic.childImageSharp.fluid}
-              className="kg-image"
-            />
-            <figcaption>Large image</figcaption>
-          </figure>
-          <figure className="kg-card kg-image-card kg-width-full">
-            <Img
-              fluid={data.largePic.childImageSharp.fluid}
-              className="kg-image"
-            />
-            <figcaption>Full bleed image</figcaption>
-          </figure>
           <hr />
           <h2 id="table">Table</h2>
           <table>
@@ -531,31 +509,6 @@ const indexQuery = graphql`
     site {
       siteMetadata {
         title
-      }
-    }
-    smallPic: file(
-      relativePath: { eq: "fabio-comparelli-696506-unsplash.jpg" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1360) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    medPic: file(relativePath: { eq: "sophia-valkova-30139-unsplash.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1360) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    largePic: file(
-      relativePath: { eq: "vladimir-malyutin-98174-unsplash.jpg" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1360) {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
   }
