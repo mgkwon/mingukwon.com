@@ -11,7 +11,6 @@ import "../utils/css/screen.css"
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
-  // const posts = data.allMarkdownRemark.edges
   const posts = data.allContentfulBlogPost.edges
   let postCounter = 0
 
@@ -45,39 +44,6 @@ const BlogIndex = ({ data }, location) => {
     </Layout>
   )
 }
-
-// const indexQuery = graphql`
-//   query {
-//     site {
-//       siteMetadata {
-//         title
-//         description
-//       }
-//     }
-//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-//       edges {
-//         node {
-//           excerpt
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             date(formatString: "MMMM DD, YYYY")
-//             title
-//             description
-//             thumbnail {
-//               childImageSharp {
-//                 fluid(maxWidth: 1360) {
-//                   ...GatsbyImageSharpFluid
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 const indexQuery = graphql`
   query {
