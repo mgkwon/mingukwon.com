@@ -18,6 +18,17 @@ if (!spaceId || !accessToken) {
   )
 }
 
+const googleAnalyticsConfig = {
+  trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+}
+
+const { trackingId } = googleAnalyticsConfig
+
+if (!trackingId) {
+  throw new Error(
+    'Google analytics tracking id need to be provided.'
+  )
+}
 
 module.exports = {
   siteMetadata: {
@@ -90,7 +101,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: trackingId,
       },
     },
     `gatsby-plugin-netlify`,
