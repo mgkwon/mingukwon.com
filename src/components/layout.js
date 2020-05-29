@@ -32,9 +32,9 @@ const Layout = props => {
               <li className="nav-about" role="menuitem">
                 <Link to={`/about`}>About</Link>
               </li>
-              <li className="nav-elements" role="menuitem">
+              {/* <li className="nav-elements" role="menuitem">
                 <Link to={`/elements`}>Elements</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <div className="site-head-center">
@@ -45,29 +45,29 @@ const Layout = props => {
           <div className="site-head-right">
             <div className="social-links">
               <a
-                href="https://www.facebook.com"
-                title="Facebook"
+                href="https://www.linkedin.com/in/mingukwon/"
+                title="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Facebook
+                LinkedIn
               </a>
               <a
-                href="https://twitter.com"
-                title="Twitter"
+                href="https://www.instagram.com/mgkwon/"
+                title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter
+                Instagram
               </a>
-              <Link
+              {/* <Link
                 to={`/rss.xml`}
                 title="RSS"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 RSS
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -78,15 +78,16 @@ const Layout = props => {
         </div>
       </main>
       <footer className="site-foot">
-        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> &mdash;
-        Built with{" "}
+        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> 
+        {/* &mdash; */}
+        {/* Built with{" "}
         <a
           href="https://gatsbyjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Gatsby
-        </a>
+        </a> */}
       </footer>
     </div>
   )

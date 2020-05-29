@@ -11,7 +11,8 @@ import "../utils/css/screen.css"
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  // const posts = data.allMarkdownRemark.edges
+  const posts = data.allContentfulBlogPost.edges
   let postCounter = 0
 
   return (
@@ -33,7 +34,7 @@ const BlogIndex = ({ data }, location) => {
           postCounter++
           return (
             <PostCard
-              key={node.fields.slug}
+              key={node.slug}
               count={postCounter}
               node={node}
               postClass={`post`}
@@ -45,6 +46,39 @@ const BlogIndex = ({ data }, location) => {
   )
 }
 
+// const indexQuery = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         title
+//         description
+//       }
+//     }
+//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+//       edges {
+//         node {
+//           excerpt
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             date(formatString: "MMMM DD, YYYY")
+//             title
+//             description
+//             thumbnail {
+//               childImageSharp {
+//                 fluid(maxWidth: 1360) {
+//                   ...GatsbyImageSharpFluid
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
+
 const indexQuery = graphql`
   query {
     site {
@@ -53,23 +87,15 @@ const indexQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          slug
+          date(formatString: "MMMM DD, YYYY")
+          title
+          thumbnail {
+            fluid {
+              ...GatsbyContentfulFluid
             }
           }
         }

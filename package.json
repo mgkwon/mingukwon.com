@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-london",
+  "name": "mingukwon.com",
   "private": true,
-  "description": "A custom, image-centric theme for Gatsby",
+  "description": "Personal Blog",
   "version": "1.0.0",
-  "author": "Imed Adel <aadelimed@gmail.com>",
+  "author": "Mingu Kwon <mgskwon@gmail.com>",
   "bugs": {
-    "url": "https://github.com/ImedAdel/gatsby-london/issues"
+    "url": "https://gitlab.com/mgkwon/mingukwon.com/-/issues"
   },
   "dependencies": {
     "gatsby": "^2.4.2",
@@ -24,6 +24,7 @@
     "gatsby-remark-prismjs": "^3.2.9",
     "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-remark-smartypants": "^2.0.9",
+    "gatsby-source-contentful": "^2.3.12",
     "gatsby-source-filesystem": "^2.0.33",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
@@ -46,7 +47,7 @@
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://mingukwon.com",
   "keywords": [
     "gatsby",
     "ghost",
@@ -58,7 +59,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ImedAdel/gatsby-london.git"
+    "url": "git+https://gitlab.com/mgkwon/mingukwon.com"
   },
   "scripts": {
     "build": "gatsby build",
@@ -72,5 +73,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

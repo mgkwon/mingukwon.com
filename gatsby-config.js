@@ -1,6 +1,24 @@
 const urljoin = require("url-join")
 const siteConfig = require("./siteConfig")
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+}
+
+const { spaceId, accessToken } = contentfulConfig
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    'Contentful spaceId and the access token need to be provided.'
+  )
+}
+
+
 module.exports = {
   siteMetadata: {
     title: siteConfig.name,
@@ -8,7 +26,9 @@ module.exports = {
     description: siteConfig.description,
     siteUrl: urljoin(siteConfig.url, siteConfig.prefix),
     social: {
-      twitter: siteConfig.twitter,
+      // twitter: siteConfig.twitter,
+      instagram: siteConfig.instagram,
+      linkedin: siteConfig.linkedin,
     },
   },
   plugins: [
@@ -61,9 +81,14 @@ module.exports = {
           require("postcss-easy-import")(),
           require("postcss-custom-properties")({ preserve: false }),
           require("postcss-color-function")(),
-          require("autoprefixer")({ browsers: ["last 2 versions"] }),
+          // require("autoprefixer")({ browsers: ["last 2 versions"] }),
         ],
       },
+    },
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig,
     },
     {
       resolve: `gatsby-plugin-purgecss`,

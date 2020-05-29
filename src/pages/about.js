@@ -13,9 +13,9 @@ const AboutPage = ({ data }, location) => {
 
   return (
     <Layout title={siteTitle}>
-      <SEO title="ABout" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+      <SEO title="ABout" keywords={[`blog`, `mingu`, `mingu kwon`]} />
 
-      <article className="post-content page-template no-image">
+      {/* <article className="post-content page-template no-image">
         <div className="post-content-body">
           <h2 id="clean-minimal-and-deeply-customisable-london-is-a-theme-made-for-people-who-appreciate-simple-lines-">
             Clean, minimal, and deeply customisable. London is a theme made for
@@ -50,7 +50,7 @@ const AboutPage = ({ data }, location) => {
             for more ways to integrate Ghost with your favourite services.
           </p>
         </div>
-      </article>
+      </article> */}
     </Layout>
   )
 }
