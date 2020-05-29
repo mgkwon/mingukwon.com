@@ -70,7 +70,7 @@ export const pageQuery = graphql`
       date(formatString: "MMMM Do, YYYY")
       thumbnail {
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       content {
