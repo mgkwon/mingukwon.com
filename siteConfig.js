@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'mingukwon',
+  name: 'mingu kwon',
   shortName: 'mingukwon',
-  description: 'Note & Blog',
+  description: 'Roboticist.',
   url: 'https://mingukwon.com',
   prefix: '/',
   author: 'Mingu Kwon',

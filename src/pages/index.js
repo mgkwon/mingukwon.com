@@ -61,7 +61,7 @@ const indexQuery = graphql`
           title
           thumbnail {
             fluid {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
