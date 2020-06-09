@@ -69,7 +69,7 @@ export const pageQuery = graphql`
       description
       date(formatString: "MMMM Do, YYYY")
       thumbnail {
-        fluid {
+        fluid(quality: 100) {
           ...GatsbyContentfulFluid_withWebp
         }
       }

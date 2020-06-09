@@ -69,7 +69,7 @@ const indexQuery = graphql`
     }
     contentfulAsset(title: {eq: "profile_2"}) {
       title
-      fluid{
+      fluid(quality: 90){
         ...GatsbyContentfulFluid_withWebp
       }
     }

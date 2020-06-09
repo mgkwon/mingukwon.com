@@ -60,7 +60,7 @@ const indexQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           thumbnail {
-            fluid {
+            fluid(quality: 100){
               ...GatsbyContentfulFluid_withWebp
             }
           }
