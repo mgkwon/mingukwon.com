@@ -27,7 +27,7 @@ const AboutPage = ({ data }, location) => {
             />
             <figcaption>With Biscuit &#128054; in Girona, Spain</figcaption>
           </figure>
-          <h2>About Me</h2>
+          {/* <h2>About Me</h2>
           <h3 id="dynamic-styles">I am</h3>
           <p>
             a robotics engineer and I want to make our everyday lives a little more convenient with my skills, knowledge, and passion.
@@ -53,7 +53,7 @@ const AboutPage = ({ data }, location) => {
             It is fascinating to see that the robotics solutions and automation can bring benefits in different forms for each industry 
             despite the different value propositions they want to bring to their customers. 
             I am always excited to see all the new robotics applications developed around the world. What would be the next for me? 
-          </p>
+          </p> */}
         </div>
       </article>
     </Layout>
