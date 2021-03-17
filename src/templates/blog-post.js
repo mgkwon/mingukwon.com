@@ -16,9 +16,7 @@ class BlogPostTemplate extends React.Component {
           title={post.title}
           description={post.description || post.excerpt}
         />
-        <article
-          className={`post-content ${post.thumbnail || `no-image`}`}
-        >
+        <article className={`post-content ${post.thumbnail || `no-image`}`}>
           <header className="post-content-header">
             <h1 className="post-content-title">{post.title}</h1>
           </header>
@@ -34,12 +32,17 @@ class BlogPostTemplate extends React.Component {
                 fluid={post.thumbnail.fluid}
                 alt={post.title}
               />
+              <figcaption
+                dangerouslySetInnerHTML={{ __html: post.thumbnail.description }}
+              ></figcaption>
             </div>
           )}
 
           <div
             className="post-content-body"
-            dangerouslySetInnerHTML={{ __html: post.content.childMarkdownRemark.html }}
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
           />
 
           <footer className="post-content-footer">
@@ -69,6 +72,7 @@ export const pageQuery = graphql`
       description
       date(formatString: "MMMM Do, YYYY")
       thumbnail {
+        description
         fluid(quality: 100) {
           ...GatsbyContentfulFluid_withWebp
         }
