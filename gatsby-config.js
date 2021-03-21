@@ -1,7 +1,7 @@
 const urljoin = require("url-join")
 const siteConfig = require("./siteConfig")
 
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
@@ -14,7 +14,7 @@ const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {
   throw new Error(
-    'Contentful spaceId and the access token need to be provided.'
+    "Contentful spaceId and the access token need to be provided."
   )
 }
 
@@ -25,9 +25,7 @@ const googleAnalyticsConfig = {
 const { trackingId } = googleAnalyticsConfig
 
 if (!trackingId) {
-  throw new Error(
-    'Google analytics tracking id need to be provided.'
-  )
+  throw new Error("Google analytics tracking id need to be provided.")
 }
 
 module.exports = {
@@ -82,19 +80,19 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
+    "gatsby-plugin-sharp",
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true, // Print removed selectors and processed file names
-        // develop: true, // Enable while using `gatsby develop`
+        develop: true, // Enable while using `gatsby develop`
         // tailwind: true, // Enable tailwindcss support
         // whitelist: ['whitelist'], // Don't remove this selector
-        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+        ignore: ["/src/utils/"], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       },
     },
