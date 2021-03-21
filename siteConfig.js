@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'mingu kwon',
+  name: 'Mingu Kwon',
   shortName: 'mingukwon',
   description: 'Roboticist.',
   url: 'https://mingukwon.com',
