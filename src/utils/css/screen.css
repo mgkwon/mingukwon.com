@@ -551,7 +551,6 @@ body {
 .post-content-body {
     font-size: 1.9rem;
     line-height: 1.65em;
-    color:#3eb0ef;
 }
 @media (max-width: 500px) {
     .post-content-body {
@@ -612,10 +611,10 @@ body {
 }
 
 .post-content-body p img {
-    max-width: 100%;
-    height: auto;
-    position: relative;
-    display: block;
+    max-width: 100% !important; 
+    height: auto !important;
+    position: relative !important;
+    display: block !important;
 }
 
 .post-content-body img {
