@@ -544,6 +544,7 @@ body {
 .post-content-body {
   font-size: 1.9rem;
   line-height: 1.65em;
+  display: inline-block;
 }
 @media (max-width: 500px) {
   .post-content-body {
