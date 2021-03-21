@@ -610,6 +610,13 @@ body {
     word-break: break-all;
 }
 
+.post-content-body p img {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+}
+
 .post-content-body pre {
     overflow-x: auto;
     margin: 1.5em 0 3em;
@@ -654,13 +661,6 @@ body {
     background: color(var(--color-border) l(+10%));
     box-shadow: #fff 0 0 0 5px;
     transform: rotate(45deg);
-}
-
-.post-content-body img {
-    max-width: 100%;
-    height: auto;
-    position: relative;
-    display: block;
 }
 
 .footnotes-sep {
