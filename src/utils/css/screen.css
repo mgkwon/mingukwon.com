@@ -617,6 +617,13 @@ body {
     display: block;
 }
 
+.post-content-body img {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+}
+
 .post-content-body pre {
     overflow-x: auto;
     margin: 1.5em 0 3em;
