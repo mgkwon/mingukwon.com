@@ -16,9 +16,16 @@ const BlogIndex = ({ data }, location) => {
 
   return (
     <Layout title={siteTitle}>
-      <SEO 
-        title="Personal Website" 
-        keywords={[`blog`, `personal website`, `mingu`, `mingu kwon`, 'robotics engineer', 'roboticist']} 
+      <SEO
+        title="Home"
+        keywords={[
+          `blog`,
+          `personal website`,
+          `mingu`,
+          `mingu kwon`,
+          "robotics engineer",
+          "roboticist",
+        ]}
       />
       {/* <Bio /> */}
       {data.site.siteMetadata.description && (
@@ -60,7 +67,7 @@ const indexQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           thumbnail {
-            fluid(quality: 100){
+            fluid(quality: 100) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
