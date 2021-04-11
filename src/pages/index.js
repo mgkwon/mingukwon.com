@@ -8,7 +8,7 @@ import PostCard from "../components/postCard"
 // import "../utils/global.scss"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
-//TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
+
 const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulBlogPost.edges
@@ -27,7 +27,6 @@ const BlogIndex = ({ data }, location) => {
           "roboticist",
         ]}
       />
-      {/* <Bio /> */}
       {data.site.siteMetadata.description && (
         <header className="page-head">
           <h2 className="page-head-title">

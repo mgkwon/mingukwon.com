@@ -43,7 +43,7 @@ class BlogPostTemplate extends React.Component {
             dangerouslySetInnerHTML={{
               __html: post.content.childMarkdownRemark.html,
             }}
-          />
+          ></div>
 
           <footer className="post-content-footer">
             {/* There are two options for how we display the byline/author-info.
