@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
+import Masonry from "react-masonry-css"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,6 +14,13 @@ const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulBlogPost.edges
   let postCounter = 0
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1824: 3,
+    1224: 2,
+    768: 1,
+  }
 
   return (
     <Layout title={siteTitle}>
@@ -34,19 +42,17 @@ const BlogIndex = ({ data }, location) => {
           </h2>
         </header>
       )}
-      <div className="post-feed">
+
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+      >
         {posts.map(({ node }) => {
           postCounter++
-          return (
-            <PostCard
-              key={node.slug}
-              count={postCounter}
-              node={node}
-              postClass={`post`}
-            />
-          )
+          return <PostCard count={postCounter} node={node} />
         })}
-      </div>
+      </Masonry>
     </Layout>
   )
 }

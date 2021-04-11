@@ -16,7 +16,6 @@ const Layout = props => {
             <div
               className="hamburger hamburger--collapse"
               aria-label="Menu"
-              role="button"
               aria-controls="navigation"
             >
               <div className="hamburger-box">
@@ -25,11 +24,11 @@ const Layout = props => {
             </div>
           </a>
           <nav id="swup" class="site-head-left">
-            <ul className="nav" role="menu">
-              <li className="nav-home nav-current" role="menuitem">
+            <ul className="nav">
+              <li className="nav-home nav-current">
                 <Link to={`/`}>Home</Link>
               </li>
-              <li className="nav-about" role="menuitem">
+              <li className="nav-about">
                 <Link to={`/about`}>About</Link>
               </li>
             </ul>
