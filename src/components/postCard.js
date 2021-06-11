@@ -12,7 +12,7 @@ export default props => (
     }
   >
     <Link to={props.node.slug} className="post-card-link">
-      <Img fluid={props.node.thumbnail.fluid} />
+      {props.node.thumbnail ? <Img fluid={props.node.thumbnail.fluid} /> : null}
       <div className="post-card-content">
         <h2 className="post-card-title">
           {props.node.title || props.node.slug}

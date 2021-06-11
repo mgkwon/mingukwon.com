@@ -438,6 +438,10 @@ body {
 .post-card-link:hover .post-card-content {
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.33, 0, 0.2, 1);
+  /* text-decoration: underline;
+  text-decoration-skip-ink:;
+  text-decoration-color: crimson;
+  text-decoration-style: wavy; */
 }
 
 .post-card-title {
@@ -471,16 +475,25 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 4vw;
+  position: relative;
+  background-color: #f8f8f8;
 }
 
 .post-card.no-image .post-card-title {
   font-size: 5rem;
   line-height: 1.15em;
   text-align: left;
+  color: #111;
+}
+
+.post-card.no-image .post-card-link:hover {
+  text-decoration: none;
 }
 
 .post-card.no-image:hover .post-card-title {
   text-decoration: underline;
+  text-decoration-color: crimson;
+  text-decoration-style: double;
 }
 
 @media (max-width: 1200px) {
