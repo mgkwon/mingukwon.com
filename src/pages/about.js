@@ -39,19 +39,19 @@ const AboutPage = ({ data }, location) => {
 
             <div class="item">
               <h2>Senior Robotics Software Engineer</h2>
-              <p>Remy Robotics</p>
+              <a href="https://remyrobotics.com/">Remy Robotics</a>
               <p>Jul 2019 - Present &#x1F1EA;&#x1F1F8;</p>
             </div>
 
             <div class="item">
               <h2>Lead Robotics Software Engineer</h2>
-              <p>Dorabot</p>
+              <a href="https://www.dorabot.com/">Dorabot</a>
               <p>Jul 2018 – Jun 2019 &#x1F1E8;&#x1F1F3;</p>
             </div>
 
             <div class="item">
               <h2>Robotics Software Engineer</h2>
-              <p>Dorabot</p>
+              <a href="https://www.dorabot.com/">Dorabot</a>
               <p>May 2016 – Jun 2018 &#x1F1E8;&#x1F1F3;</p>
             </div>
 
@@ -63,19 +63,25 @@ const AboutPage = ({ data }, location) => {
 
             <div class="item">
               <h2>Mechanical Designer Intern</h2>
-              <p>Blackberry</p>
+              <a href="https://www.blackberry.com/us/en/products/devices">
+                Blackberry
+              </a>
               <p>May 2014 – Aug 2014, Sep 2013 – Dec 2013 &#x1F1E8;&#x1F1E6;</p>
             </div>
 
             <div class="item">
               <h2>Controls Engineer Intern</h2>
-              <p>General Motors</p>
+              <a href="https://www.gm.ca/en/home/company/canada/stcatharines.html">
+                General Motors
+              </a>
               <p>Jan 2013 – Apr 2013 &#x1F1E8;&#x1F1E6;</p>
             </div>
 
             <div class="item">
               <h2>Software Verification Intern</h2>
-              <p>Honeywell Aerospacea</p>
+              <a href="https://aerospace.honeywell.com/us/en/products-and-services/product/hardware-and-systems/satellite-communications">
+                Honeywell Aerospace
+              </a>
               <p>May 2012 – Aug 2012, Sep 2011 – Dec 2011 &#x1F1E8;&#x1F1E6;</p>
             </div>
           </section>
@@ -104,7 +110,12 @@ const AboutPage = ({ data }, location) => {
                 Grasp quality evaluation and planning for objects with negative
                 curvature
               </h2>
-              <p class="publication-details">Liu S., [et al, Kwon M.] (2017)</p>
+              <p class="publication-details">
+                Liu S., [et al, Kwon M.] (2017) &nbsp;
+                <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiGnezHwrWCAxXsTaQEHXQ5D34QFnoECBEQAQ&url=https%3A%2F%2Frobotics.ucmerced.edu%2Fsites%2Frobotics.ucmerced.edu%2Ffiles%2Fpage%2Fdocuments%2Fgraspwnc.pdf&usg=AOvVaw1ElNnWv2zqfhhoBfsl_I3P&opi=89978449">
+                  PDF
+                </a>
+              </p>
             </div>
             <div class="item">
               <h2 class="publication-title">
@@ -112,7 +123,8 @@ const AboutPage = ({ data }, location) => {
               </h2>
               <p class="publication-details">
                 Kwon M., [et al] (2018) In: Sun Y., Falco J. (eds) Robotic
-                Grasping and Manipulation 2016.
+                Grasping and Manipulation 2016. &nbsp;
+                <a href="https://www.youtube.com/watch?v=WeFoS1-oGVE">Video</a>
               </p>
             </div>
           </section>
