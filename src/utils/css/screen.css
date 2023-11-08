@@ -572,6 +572,71 @@ body {
   }
 }
 
+.post-content-body {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: auto;
+  padding: 1rem;
+}
+
+.post-content-body h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.post-content-body h2 {
+  font-size: 1.75em;
+  margin-bottom: 0.4em;
+}
+
+.post-content-body h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.4em;
+}
+
+/* ...and so on for other heading levels */
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .post-content-body {
+    padding: 0.5rem;
+  }
+
+  .post-content-body h1 {
+    font-size: 1.5em; /* Smaller size for mobile */
+  }
+
+  .post-content-body h2 {
+    font-size: 1.3em; /* Smaller size for mobile */
+  }
+
+  .post-content-body h3 {
+    font-size: 1.2em; /* Smaller size for mobile */
+  }
+
+  /* ...and so on for other heading levels */
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 900px) {
+  .post-content-body {
+    padding: 0.75rem;
+  }
+
+  .post-content-body h1 {
+    font-size: 1.75em; /* Medium size for tablets */
+  }
+
+  .post-content-body h2 {
+    font-size: 1.5em; /* Medium size for tablets */
+  }
+
+  .post-content-body h3 {
+    font-size: 1.3em; /* Medium size for tablets */
+  }
+
+  /* ...and so on for other heading levels */
+}
+
 .post-content-body h1,
 .post-content-body h2,
 .post-content-body h3,
