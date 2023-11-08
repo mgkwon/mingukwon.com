@@ -31,6 +31,9 @@ const Layout = props => {
               <li className="nav-about">
                 <Link to={`/about`}>About</Link>
               </li>
+              <li className="nav-posts">
+                <Link to={`/posts`}>Posts</Link>
+              </li>
             </ul>
           </nav>
           <div className="site-head-center">

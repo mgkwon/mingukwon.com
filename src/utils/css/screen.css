@@ -51,7 +51,7 @@ body {
   padding: 3vw;
   min-height: 100vh;
 }
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .site-wrapper {
     padding: 6vw;
   }
@@ -62,8 +62,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 13vw 0;
-  max-width: 70%;
+  /* padding: 50vw 0; */
+  height: 75vh;
+  max-width: 100%;
   margin: auto;
   text-align: center;
 }
@@ -134,7 +135,8 @@ body {
   position: relative;
   z-index: 300;
   margin-top: -10px;
-  font-size: 1.35rem;
+  margin-bottom: 50px;
+  font-size: 1.7rem;
 }
 
 .site-head-container {
@@ -172,7 +174,7 @@ body {
   padding: 10px 12px;
   color: var(--color-base);
   font-weight: 600;
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 .nav-current a,
@@ -193,7 +195,7 @@ body {
   display: block;
   padding: 10px;
   color: var(--color-base);
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   line-height: 1em;
   font-weight: 700;
   text-transform: uppercase;
@@ -217,6 +219,13 @@ body {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+}
+
+.site-head-left a:hover,
+.site-head-right a:hover {
+  text-decoration: underline;
+  text-decoration-color: crimson;
+  text-decoration-style: single;
 }
 
 .social-links {
@@ -266,7 +275,7 @@ body {
   padding: 12px 12px 12px 0;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .site-head {
     padding: 0;
   }
@@ -493,7 +502,7 @@ body {
 .post-card.no-image:hover .post-card-title {
   text-decoration: underline;
   text-decoration-color: crimson;
-  text-decoration-style: double;
+  text-decoration-style: single;
 }
 
 @media (max-width: 1200px) {
@@ -744,4 +753,47 @@ body {
   /* change div to reference your elements you put in <Masonry> */
   background: grey;
   margin-bottom: 30px;
+}
+
+/* About page
+/* ---------------------------------------------------------- */
+
+.flex-container {
+  display: flex; /* Enable flexbox */
+  /* justify-content: center;  */
+  align-items: center; /* Center vertically */
+  width: 100%;
+}
+.about-section {
+  max-width: 100%;
+}
+.about-section.right {
+  text-align: right;
+}
+.about-section .item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.about-section .item:last-child {
+  border-bottom: none;
+}
+.about-section h1 {
+  font-size: 1.5em;
+  color: #000;
+  margin: 2;
+  /* font-size: 2.5rem; */
+  line-height: 1em;
+  font-weight: 700;
+  /* text-decoration: underline; */
+}
+.about-section h2 {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0;
+}
+.about-section p {
+  font-size: 1em;
+  color: #666;
+  margin: 5px 0;
 }
