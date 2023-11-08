@@ -52,6 +52,14 @@ const Layout = props => {
                 LinkedIn
               </a>
               <a
+                href="https://github.com/mgkwon/"
+                title="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
                 href="https://www.instagram.com/mgkwon/"
                 title="Instagram"
                 target="_blank"
