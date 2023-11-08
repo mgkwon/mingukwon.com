@@ -870,3 +870,28 @@ body {
   color: #555;
   margin: 5px 0;
 }
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .about-section h1 {
+    font-size: 1.3em;
+  }
+  .about-section h2 {
+    font-size: 1em;
+    color: #333;
+    margin: 0;
+  }
+  .about-section p {
+    font-size: 0.8em;
+    color: #555;
+    margin: 5px 0;
+  }
+  .about-section a {
+    text-decoration: underline;
+    text-decoration-color: crimson;
+    text-decoration-style: single;
+    font-size: 0.8em;
+    color: #555;
+    margin: 5px 0;
+  }
+}
