@@ -25,14 +25,20 @@ const Layout = props => {
           </a>
           <nav id="swup" class="site-head-left">
             <ul className="nav">
-              <li className="nav-home nav-current">
-                <Link to={`/`}>Home</Link>
+              <li>
+                <Link to="/" activeClassName="nav-current">
+                  Home
+                </Link>
               </li>
-              <li className="nav-about">
-                <Link to={`/about`}>About</Link>
+              <li>
+                <Link to="/about" activeClassName="nav-current">
+                  About
+                </Link>
               </li>
-              <li className="nav-posts">
-                <Link to={`/posts`}>Posts</Link>
+              <li>
+                <Link to="/posts" activeClassName="nav-current">
+                  Posts
+                </Link>
               </li>
             </ul>
           </nav>
