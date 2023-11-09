@@ -29,7 +29,11 @@ const AboutPage = ({ data }, location) => {
           <figure>
             <Img fluid={data.contentfulAsset.fluid} className="kg-image" />
             <figcaption>
-              With Biscuit <span role="img">&#128054;</span> in Girona, Spain
+              With Biscuit{" "}
+              <span role="img" aria-label="dog">
+                &#128054;
+              </span>{" "}
+              in Girona, Spain
             </figcaption>
           </figure>
         </div>
@@ -41,7 +45,10 @@ const AboutPage = ({ data }, location) => {
               <h2>Senior Robotics Software Engineer</h2>
               <a href="https://remyrobotics.com/">Remy Robotics</a>
               <p>
-                Jul 2019 - Present <span role="img">&#x1F1EA;&#x1F1F8;</span>
+                Jul 2019 - Present{" "}
+                <span role="img" aria-label="spanish flag">
+                  &#x1F1EA;&#x1F1F8;
+                </span>
               </p>
             </div>
 
@@ -49,7 +56,10 @@ const AboutPage = ({ data }, location) => {
               <h2>Lead Robotics Software Engineer</h2>
               <a href="https://www.dorabot.com/">Dorabot</a>
               <p>
-                Jul 2018 – Jun 2019 <span role="img">&#x1F1E8;&#x1F1F3;</span>
+                Jul 2018 – Jun 2019{" "}
+                <span role="img" aria-label="chinese flag">
+                  &#x1F1E8;&#x1F1F3;
+                </span>
               </p>
             </div>
 
@@ -57,7 +67,10 @@ const AboutPage = ({ data }, location) => {
               <h2>Robotics Software Engineer</h2>
               <a href="https://www.dorabot.com/">Dorabot</a>
               <p>
-                May 2016 – Jun 2018 <span role="img">&#x1F1E8;&#x1F1F3;</span>
+                May 2016 – Jun 2018{" "}
+                <span role="img" aria-label="chinese flag">
+                  &#x1F1E8;&#x1F1F3;
+                </span>
               </p>
             </div>
 
@@ -65,7 +78,10 @@ const AboutPage = ({ data }, location) => {
               <h2>Co-Founder</h2>
               <p>YunLab</p>
               <p>
-                May 2015 – Apr 2016 <span role="img">&#x1F1E8;&#x1F1E6;</span>
+                May 2015 – Apr 2016{" "}
+                <span role="img" aria-label="canadian flag">
+                  &#x1F1E8;&#x1F1E6;
+                </span>
               </p>
             </div>
 
@@ -76,7 +92,9 @@ const AboutPage = ({ data }, location) => {
               </a>
               <p>
                 May 2014 – Aug 2014, Sep 2013 – Dec 2013{" "}
-                <span role="img">&#x1F1E8;&#x1F1E6;</span>
+                <span role="img" aria-label="canadian flag">
+                  &#x1F1E8;&#x1F1E6;
+                </span>
               </p>
             </div>
 
@@ -86,7 +104,10 @@ const AboutPage = ({ data }, location) => {
                 General Motors
               </a>
               <p>
-                Jan 2013 – Apr 2013 <span role="img">&#x1F1E8;&#x1F1E6;</span>
+                Jan 2013 – Apr 2013{" "}
+                <span role="img" aria-label="canadian flag">
+                  &#x1F1E8;&#x1F1E6;
+                </span>
               </p>
             </div>
 
@@ -97,7 +118,9 @@ const AboutPage = ({ data }, location) => {
               </a>
               <p>
                 May 2012 – Aug 2012, Sep 2011 – Dec 2011{" "}
-                <span role="img">&#x1F1E8;&#x1F1E6;</span>
+                <span role="img" aria-label="canadian flag">
+                  &#x1F1E8;&#x1F1E6;
+                </span>
               </p>
             </div>
           </section>
