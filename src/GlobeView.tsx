@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { MeshLambertMaterial, DoubleSide } from 'https://esm.sh/three';
+import { MeshLambertMaterial, DoubleSide } from 'three';
 import * as topojson from 'https://esm.sh/topojson-client';
 import { scaleSequentialSqrt } from 'https://esm.sh/d3-scale';
 import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
@@ -7,7 +7,7 @@ import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
 import Globe from 'react-globe.gl';
 
 const polygonsMaterial = new MeshLambertMaterial({ color: 'darkslategrey', side: DoubleSide });
-
+const globeMaterial = new MeshLambertMaterial({color: 'rgba(200,130,100,0.5)'})
 export default function GlobeView({ focus, locations }) {
   const [landPolygons, setLandPolygons] = useState([]);
   const [countries, setCountries] = useState({ features: []});
@@ -23,7 +23,8 @@ export default function GlobeView({ focus, locations }) {
 
   useEffect(() => {
     // load data
-    fetch('../datasets/ne_110m_admin_0_countries.geojson').then(res => res.json()).then(setCountries);
+    fetch('../ne_110m_admin_0_countries.geojson').then(res => res.json()).then(setCountries);
+    console.log(countries)
   }, []);
 
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd);
@@ -38,14 +39,16 @@ export default function GlobeView({ focus, locations }) {
   colorScale.domain([0, maxVal]);
   
   return <Globe
+  globeMaterial={globeMaterial}
   backgroundColor="rgba(1,1,1,0.0)"
   showGlobe={true}
   showAtmosphere={false}
-  polygonsData={landPolygons}
-  polygonCapMaterial={polygonsMaterial}
-  polygonSideColor={() => 'rgba(238, 232, 232, 0.84)'}
+
+  // polygonsData={landPolygons}
+  // polygonCapMaterial={polygonsMaterial}
+  // polygonSideColor={() => 'rgba(238, 232, 232, 0.84)'}
   
-  // polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')}
+  polygonsData={countries}
   // polygonAltitude={d => d === hoverD ? 0.12 : 0.06}
   // polygonCapColor={d => d === hoverD ? 'steelblue' : colorScale(getVal(d))}
   // polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
