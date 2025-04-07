@@ -13,30 +13,33 @@ export default function GlobeView({ focus, locations }) {
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState();
 
-  useEffect(() => {
-    // load data
-    fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
-      .then(landTopo => {
-        setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // load data
+  //   fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
+  //     .then(landTopo => {
+  //       setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    // load data
-    fetch('../ne_110m_admin_0_countries.geojson').then(res => res.json()).then(setCountries);
-    console.log(countries)
+    fetch('/ne_110m_admin_0_countries.geojson')
+      .then(res => res.json())
+      .then(data => {
+        setCountries(data);
+      });
+      console.log(countries);
   }, []);
 
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd);
 
   // GDP per capita (avoiding countries with small pop)
-  const getVal = feat => feat.properties.GDP_MD_EST / Math.max(1e5, feat.properties.POP_EST);
+  // const getVal = feat => feat.properties.GDP_MD_EST / Math.max(1e5, feat.properties.POP_EST);
 
-  const maxVal = useMemo(
-    () => Math.max(...countries.features.map(getVal)),
-    [countries]
-  );
-  colorScale.domain([0, maxVal]);
+  // const maxVal = useMemo(
+  //   () => Math.max(...countries.features.map(getVal)),
+  //   [countries]
+  // );
+  // colorScale.domain([0, maxVal]);
   
   return <Globe
   globeMaterial={globeMaterial}
@@ -48,7 +51,8 @@ export default function GlobeView({ focus, locations }) {
   // polygonCapMaterial={polygonsMaterial}
   // polygonSideColor={() => 'rgba(238, 232, 232, 0.84)'}
   
-  polygonsData={countries}
+  polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')}
+
   // polygonAltitude={d => d === hoverD ? 0.12 : 0.06}
   // polygonCapColor={d => d === hoverD ? 'steelblue' : colorScale(getVal(d))}
   // polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
