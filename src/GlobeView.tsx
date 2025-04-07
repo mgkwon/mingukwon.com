@@ -13,13 +13,17 @@ export default function GlobeView({ focus, locations }) {
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState();
 
-  // useEffect(() => {
-  //   // load data
-  //   fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
-  //     .then(landTopo => {
-  //       setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
-  //     });
-  // }, []);
+  const validISOs = useMemo(() => new Set(locations.map(loc => loc.ISO_A2)), [locations]);
+  const highlightedCountries = countries.features.filter(d => validISOs.has(d.properties.ISO_A2));
+
+
+  useEffect(() => {
+    // load data
+    fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
+      .then(landTopo => {
+        setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
+      });
+  }, []);
 
   useEffect(() => {
     fetch('/ne_110m_admin_0_countries.geojson')
@@ -43,26 +47,26 @@ export default function GlobeView({ focus, locations }) {
   
   return <Globe
   globeMaterial={globeMaterial}
-  backgroundColor="rgba(1,1,1,0.0)"
+  backgroundColor="#FAF6F0"
   showGlobe={true}
   showAtmosphere={false}
 
-  // polygonsData={landPolygons}
-  // polygonCapMaterial={polygonsMaterial}
-  // polygonSideColor={() => 'rgba(238, 232, 232, 0.84)'}
-  
-  polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')}
-
-  // polygonAltitude={d => d === hoverD ? 0.12 : 0.06}
-  // polygonCapColor={d => d === hoverD ? 'steelblue' : colorScale(getVal(d))}
-  // polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
-  // polygonStrokeColor={() => '#111'}
-  // polygonLabel={({ properties: d }) => <div>
-  //   <div><b>{d.ADMIN} ({d.ISO_A2}):</b></div>
-  //   <div>GDP: <i>{d.GDP_MD_EST}</i> M$</div>
-  //   <div>Population: <i>{d.POP_EST}</i></div>
-  // </div>}
+  polygonsData={[...landPolygons, ...highlightedCountries]}
+  polygonCapColor={(d) =>
+    validISOs.has(d.properties?.ISO_A2) ? 'steelblue' : 'darkslategrey'
+  }
+  // polygonSideColor={(d) =>
+  //   validISOs.has(d.properties?.ISO_A2) ? 'rgba(70, 130, 180, 0.5)' : 'rgba(238, 232, 232, 0.84)'
+  // }
+  polygonAltitude={(d) =>
+    validISOs.has(d.properties?.ISO_A2) ? 0.02 : 0.01}
+  polygonStrokeColor={() => '#1E212D'}
+  polygonLabel={({ properties: d }) => <div>
+    <div><b>{d.ADMIN} ({d.ISO_A2}):</b></div>
+    <div>GDP: <i>{d.GDP_MD_EST}</i> M$</div>
+    <div>Population: <i>{d.POP_EST}</i></div>
+  </div>}
   // onPolygonHover={setHoverD}
-  // polygonsTransitionDuration={300}
+  polygonsTransitionDuration={300}
 />;
 };
