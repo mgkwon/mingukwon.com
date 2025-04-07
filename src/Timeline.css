@@ -1,23 +1,24 @@
 .timeline-sidebar {
-  width: 300px;
-  background: #FAF6F0;
+  width:200px;
+  background: #FAF3E0;
   color: #1E212D;
   display: flex;
   flex-direction: column;
   height: 100svh;
-  padding: 1rem;
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
 }
 
 .timeline-line-container {
-  position: absolute;
+  position: relative;
+  height:100svh;
+  padding-top: 20px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-left: 1rem;
   overflow-y: scroll;
   scrollbar-width: none;
 }
@@ -35,14 +36,14 @@
 .timeline-line,
 .timeline-line-progress {
   position: absolute;
-  left: 6px;
+  left: 0.56rem;
   width: 2px;
 }
 
 .timeline-line {
   top: 0;
   bottom: 0;
-  background: #D3CFC7;
+  background: #B68973;
   z-index: 0;
 }
 
@@ -54,36 +55,80 @@
   transition: height 0.2s ease;
 }
 
+.timeline-item-wrapper {
+  position: relative;
+}
+
 .timeline-dot-wrapper {
   position: absolute;
-  left: 0;
+  left: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   transform: translateY(-50%);
   cursor: pointer;
   transition: transform 0.2s ease;
+  z-index: 2;
 }
 
 .timeline-dot {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   background-color: #1E212D;
   border-radius: 50%;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .timeline-label {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   transition: all 0.2s ease;
+  background-color: #FAF3E0;
+  padding: 3px 3px;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: #1E212D;
 }
 
 .timeline-dot-wrapper.focused .timeline-dot {
   transform: scale(1.5);
+  background-color: #1E212D;
 }
 
 .timeline-dot-wrapper.focused .timeline-label {
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-weight: bold;
-  color: #000;
+  color: #1E212D;
+  background-color: #EABF9F;
+  border-color: #1E212D;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-details {
+  position: absolute;
+  left: 2rem;
+  width: calc(100% - 3rem);
+  background-color: #FFF;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  animation: fadeIn 0.3s ease;
+  margin-top: 10px;
+  /* border-left: 3px solid #1E212D; */
+}
+
+.timeline-details p {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+
+.timeline-details-location {
+  font-size: 0.7rem;
+  color: #666;
+  text-align: right;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
