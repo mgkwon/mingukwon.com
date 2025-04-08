@@ -1,0 +1,183 @@
+{
+    "name": "Mingu Kwon",
+    "contact": {
+        "phone": "+34 690721025",
+        "email": "mgskwon@gmail.com",
+        "website": "https://www.mingukwon.com"
+    },
+    "experience": [
+        {
+            "title": "Senior Robotics Software Engineer",
+            "company": "Remy Robotics",
+            "location": "Barcelona, Spain",
+            "date": "July 2019 – Present",
+            "achievements": [
+                "Spearheaded development and launch of autonomous cloud kitchens, leveraging robotics and AI to reduce food waste and address labor shortages.",
+                "Led a cross-functional team, mentoring engineers, defining sprint stories, and setting OKRs to align engineering with business goals, improving project delivery and team efficiency.",
+                "Achieved and maintained a robot task success rate above 99.9% by optimizing decision-making with Hierarchical Finite State Machines (HFSM) and Behavior Trees (BT).",
+                "Enhanced human-robot interaction by developing an app that uses an LLM to translate natural language into PDDL goals for high-level task planning, and used MLflow to track performance metrics.",
+                "Improved mAP by 25% using synthetic data generation with Unity and advanced augmentation techniques for instance segmentation of food ingredients with Mask R-CNN.",
+                "Enhanced real-time stereo matching and depth perception by integrating HITNet into OAK-D stereo cameras using OpenVINO and ONNX.",
+                "Reduced mean orientation error (MOE) by 80% in object pose estimation through scene reconstruction and ICP registration.",
+                "Reduced planning and execution times by 50% and ensured deterministic outcomes by developing a custom search-based(A*) path planner.",
+                "Enhanced robotic insertion accuracy with Kalman filtering for precise package angle determination.",
+                "Implemented comprehensive logging and metrics with AWS CloudWatch.",
+                "Automated node deployments using Ansible, Docker, and GitLab CI/CD."
+            ]
+        },
+        {
+            "title": "Lead Robotics Software Engineer",
+            "company": "Dorabot",
+            "location": "Shenzhen, China",
+            "date": "July 2018 – June 2019",
+            "achievements": [
+                "Led development of autonomous warehouse solutions for sorting, palletization, and loading/unloading.",
+                "Managed a team developing motion planning, grasp planning, and control libraries."
+            ]
+        },
+        {
+            "title": "Robotics Software Engineer",
+            "company": "Dorabot",
+            "location": "Shenzhen, China",
+            "date": "May 2016 – June 2018",
+            "achievements": [
+                "Integrated sampling-based and search-based planners.",
+                "Implemented dynamic object tracking with sensor fusion (ToF cameras, IR sensors, and encoders).",
+                "Implemented object detection, segmentation, and pose estimation using OpenCV and PCL.",
+                "Optimized planning efficiency by 25% using `perf` and OpenMP.",
+                "Developed admittance control using a 6D force-torque sensor."
+            ]
+        },
+        {
+            "title": "Co-Founder",
+            "company": "Yunlab",
+            "location": "Waterloo, Ontario",
+            "date": "May 2015 – April 2016",
+            "achievements": [
+                "Developed a machine shop monitoring system and dashboard.",
+                "Implemented time series k-means clustering for power consumption analysis."
+            ]
+        },
+        {
+            "title": "Mechanical Designer, Intern",
+            "company": "Blackberry",
+            "location": "Waterloo, Ontario",
+            "date": "Sept 2013 – Dec 2013",
+            "achievements": [
+                "Designed a PCB space analysis algorithm using ImageJ and decision trees.",
+                "Engineered a high-resolution PCB imaging system using image stitching."
+            ]
+        },
+        {
+            "title": "Controls Designer, Intern",
+            "company": "General Motors",
+            "location": "St. Catharines, Ontario",
+            "date": "Jan 2013 – Apr 2013",
+            "achievements": [
+                "Enhanced HMI software and PLC logic for AGVs and conveyors.",
+                "Integrated line monitoring with PLC and MySQL.",
+                "Developed a Visual Basic app to prioritize fault messages."
+            ]
+        },
+        {
+            "title": "Software Verification, Intern",
+            "company": "Honeywell Aerospace",
+            "location": "Kanata, Ontario",
+            "date": "May 2012 – Aug 2012, Sep 2011 – Dec 2011",
+            "achievements": [
+                "Automated Hardware-In-the-Loop (HIL) test cases for satellite communication software."
+            ]
+        }
+    ],
+    "education": {
+        "institution": "University of Waterloo",
+        "degree": "B.AS. Honours Mechatronics Engineering Co-op",
+        "graduationDate": "May 2015"
+    },
+    "skills": {
+        "computer_vision_ml": [
+            "Object detection",
+            "Instance Segmentation",
+            "Tracking",
+            "Pose Estimation",
+            "3D Reconstruction",
+            "OpenCV",
+            "Open3D",
+            "PCL",
+            "PyTorch"
+        ],
+        "manipulation": [
+            "Motion Planning",
+            "Sensor Fusion",
+            "Behavior Trees",
+            "Finite State Machines",
+            "PDDL",
+            "Visual Servoing",
+            "Force Control"
+        ],
+        "programming": [
+            "C++",
+            "Python",
+            "ROS"
+        ],
+        "simulation": [
+            "Unity",
+            "Nvidia Isaac",
+            "Gazebo",
+            "MATLAB"
+        ],
+        "dev_cloud": [
+            "Linux",
+            "Git",
+            "CI/CD",
+            "Ansible",
+            "Docker",
+            "AWS",
+            "FastAPI",
+            "RPC",
+            "REST",
+            "MongoDB",
+            "MySQL",
+            "GraphQL"
+        ],
+        "leadership": [
+            "Scrum",
+            "OKRs",
+            "Mentorship",
+            "Cross-functional Collaboration"
+        ]
+    },
+    "publications": [
+        {
+            "authors": [
+                "Kwon M.",
+                "[et al]"
+            ],
+            "title": "A Robotic System for Autonomous Grasping and Manipulation",
+            "book": "Robotic Grasping and Manipulation 2016",
+            "editors": "Sun Y., Falco J.",
+            "year": 2018
+        },
+        {
+            "authors": [
+                "Liu S.",
+                "[et al, Kwon M.]"
+            ],
+            "title": "Grasp quality evaluation and planning for objects with negative curvature",
+            "year": 2017
+        }
+    ],
+    "interests": [
+        "Video Games",
+        "Football",
+        "Padel",
+        "Board Games",
+        "DJing",
+        "Magic The Gathering"
+    ],
+    "links": {
+        "university_program": "https://uwaterloo.ca/future-students/programs/mechatronics-engineering/",
+        "remy_robotics": "https://remyrobotics.com/",
+        "dorabot": "https://www.dorabot.com/"
+    }
+}

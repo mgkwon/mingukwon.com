@@ -23,12 +23,13 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused }) => {
   const [progressHeight, setProgressHeight] = useState(0);
   const [showDetails, setShowDetails] = useState<string | null>(null);
   const baseDate = useMemo(() => {
+    if (locations.length === 0) return new Date(); // or null, or some known fallback
+  
     return locations.reduce((min, l) => {
       const d = new Date(l.year, l.month ?? 0);
       return d < min ? d : min;
     }, new Date(locations[0].year, locations[0].month ?? 0));
   }, [locations]);
-
   const lastLoc = locations[locations.length - 1];
   const lastDate = new Date(lastLoc.year, lastLoc.month ?? 0);
   const maxMonths = (lastDate.getFullYear() - baseDate.getFullYear()) * 12 + (lastDate.getMonth() - baseDate.getMonth()) + 12;

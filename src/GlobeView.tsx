@@ -52,7 +52,7 @@ export default function GlobeView({ focus, locations }) {
   const pointsData = useMemo(() => {
     return locations.map(loc => ({
       ...loc,
-      size: focus && focus.name === loc.name ? 1.5 : 0.8,
+      size: focus && focus.name === loc.name ? 0.5 : 0.0,
       color: focus && focus.name === loc.name ? '#FF5733' : '#1E212D'
     }));
   }, [locations, focus]);
@@ -83,7 +83,7 @@ export default function GlobeView({ focus, locations }) {
       // Location points
       pointsData={pointsData}
       pointLabel={d => `${d.name} (${d.year}): ${d.details}`}
-      pointAltitude={0.01}
+      pointAltitude={0.05}
       pointRadius="size"
       pointColor="color"
       pointsMerge={false}
