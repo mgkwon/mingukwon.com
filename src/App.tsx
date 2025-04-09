@@ -18,7 +18,9 @@ export default function App() {
   // Set initial focus when locations are loaded
   useEffect(() => {
     if (!focused && locations.length > 0) {
-      setFocused(locations[0]);
+      // Set focus to the most recent location (should be the first one now in descending order)
+      const sortedLocations = [...locations].sort((a, b) => b.year - a.year);
+      setFocused(sortedLocations[0]);
     }
   }, [locations]);
 

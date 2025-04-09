@@ -7,7 +7,7 @@ import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
 import Globe from 'react-globe.gl';
 
 const polygonsMaterial = new MeshLambertMaterial({ color: 'darkslategrey', side: DoubleSide });
-const globeMaterial = new MeshLambertMaterial({color: 'rgba(200,130,100,0.5)'})
+const globeMaterial = new MeshLambertMaterial({color: 'rgb(18, 52, 88)'})
 
 export default function GlobeView({ focus, locations }) {
   const [landPolygons, setLandPolygons] = useState([]);
@@ -22,7 +22,7 @@ export default function GlobeView({ focus, locations }) {
   useEffect(() => {
     if (focus && globeRef.current) {
       const { lat, lng } = focus;
-      
+
       globeRef.current.pointOfView({
         lat,
         lng,
@@ -53,10 +53,10 @@ export default function GlobeView({ focus, locations }) {
     return locations.map(loc => ({
       ...loc,
       size: focus && focus.name === loc.name ? 0.5 : 0.0,
-      color: focus && focus.name === loc.name ? '#FF5733' : '#1E212D'
+      color: focus && focus.name === loc.name ? '#9BEC00' : '#1E212D'
     }));
   }, [locations, focus]);
-  
+
   return (
     <Globe
       ref={globeRef}
@@ -65,25 +65,22 @@ export default function GlobeView({ focus, locations }) {
       globeMaterial={globeMaterial}
       backgroundColor="#FAF3E0"
       showGlobe={true}
-      atmosphereColor='#27548A'
       showAtmosphere={false}
-      // atmosphereColor="#F0E6D8"
-      // atmosphereAltitude={0.15}
-      
+
       // Country polygons
       polygonsData={[...landPolygons, ...highlightedCountries]}
       polygonCapColor={(d) =>
-        validISOs.has(d.properties?.ISO_A2) ? '#1E212D' : '#B68973'
+        validISOs.has(d.properties?.ISO_A2) ? '#1E212D' : '#B17F59'
       }
       polygonAltitude={(d) =>
-        validISOs.has(d.properties?.ISO_A2) ? 0.02 : 0.01}
-      polygonStrokeColor={() => '#FAF3E0'}
+        validISOs.has(d.properties?.ISO_A2) ? 0.01 : 0.005}
+      polygonStrokeColor={() => '#EAD196'}
       polygonsTransitionDuration={300}
-      
+
       // Location points
       pointsData={pointsData}
       pointLabel={d => `${d.name} (${d.year}): ${d.details}`}
-      pointAltitude={0.05}
+      pointAltitude={0.03 }
       pointRadius="size"
       pointColor="color"
       pointsMerge={false}

@@ -1,129 +1,182 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import './Timeline.css';
+    import React, { useEffect, useMemo, useRef, useState } from 'react';
+    import './Timeline.css';
 
-export type Location = {
-  year: number;
-  month?: number;
-  name: string;
-  details: string;
-  lat: number;
-  lng: number;
-  ISO_A2: string;
-};
-
-type Props = {
-  locations: Location[];
-  focused: Location | null;
-  setFocused: (loc: Location) => void;
-};
-
-const Timeline: React.FC<Props> = ({ locations, focused, setFocused }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [virtualScrollY, setVirtualScrollY] = useState(0);
-  const [progressHeight, setProgressHeight] = useState(0);
-  const [showDetails, setShowDetails] = useState<string | null>(null);
-  const baseDate = useMemo(() => {
-    if (locations.length === 0) return new Date(); // or null, or some known fallback
-  
-    return locations.reduce((min, l) => {
-      const d = new Date(l.year, l.month ?? 0);
-      return d < min ? d : min;
-    }, new Date(locations[0].year, locations[0].month ?? 0));
-  }, [locations]);
-  const lastLoc = locations[locations.length - 1];
-  const lastDate = new Date(lastLoc.year, lastLoc.month ?? 0);
-  const maxMonths = (lastDate.getFullYear() - baseDate.getFullYear()) * 12 + (lastDate.getMonth() - baseDate.getMonth()) + 12;
-
-  const totalHeight = window.innerHeight;
-
-  const timelineData = locations.map(loc => {
-    const d = new Date(loc.year, loc.month ?? 0);
-    const diff = (d.getFullYear() - baseDate.getFullYear()) * 12 + (d.getMonth() - baseDate.getMonth());
-
-    const fraction = diff / maxMonths;
-    const positionY = fraction * (totalHeight - 30);
-
-    console.log(positionY)
-    console.log(totalHeight)
-
-    return {
-      ...loc,
-      positionY
+    export type Location = {
+      year: number;
+      month?: number;
+      name: string;
+      details: string;
+      lat: number;
+      lng: number;
+      ISO_A2: string;
+      job?: string;
     };
-  });
 
-  const updateFocusBasedOnScroll = (scrollY: number) => {
-    const centerY = scrollY;
-    const closest = timelineData.reduce((a, b) =>
-      Math.abs(a.positionY - centerY) < Math.abs(b.positionY - centerY) ? a : b
-    );
+    type Props = {
+      locations: Location[];
+      focused: Location | null;
+      setFocused: (loc: Location) => void;
+    };
 
-    if (!focused || focused.name !== closest.name || focused.year !== closest.year) {
-      setFocused(closest);
-      setShowDetails(closest.name + closest.year);
-    }
+    type YearGroup = {
+      year: number;
+      locations: Location[];
+    };
 
-    const maxScroll = totalHeight;
-    setProgressHeight((scrollY / maxScroll) * 100);
-  };
+    const Timeline: React.FC<Props> = ({ locations, focused, setFocused }) => {
+      const containerRef = useRef<HTMLDivElement>(null);
+      const [virtualScrollY, setVirtualScrollY] = useState(0);
+      const [progressHeight, setProgressHeight] = useState(0);
+      const [showModal, setShowModal] = useState(false);
 
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setVirtualScrollY(prev => {
-      const maxScroll = totalHeight;
-      const next = Math.max(0, Math.min(prev + e.deltaY/10, maxScroll));
-      updateFocusBasedOnScroll(next);
-      console.log(next);
-      return next;
-    });
-  };
+      // Group locations by year and sort in descending order
+      const yearGroups = useMemo(() => {
+        const groups = new Map<number, Location[]>();
 
-  // useEffect(() => {
-  //   if (focused) {
-  //     const target = timelineData.find(l => l.name === focused.name && l.year === focused.year);
-  //     if (target) {
-  //       const next = Math.max(0, target.positionY - totalHeight / 2);
-  //       setVirtualScrollY(next);
-  //       updateFocusBasedOnScroll(next);
-  //     }
-  //   }
-  // }, [focused?.name, focused?.year]);
+        // Group locations by year
+        locations.forEach(loc => {
+          if (!groups.has(loc.year)) {
+            groups.set(loc.year, []);
+          }
+          groups.get(loc.year)?.push(loc);
+        });
 
-  return (
-    <aside className="timeline-sidebar">
-      <div
-        className="timeline-line-container"
-        onWheel={handleWheel}
-        ref={containerRef}
-      >
-        <div className="timeline-line" />
-        <div className="timeline-line-progress" style={{ height: `${progressHeight}%` }} />
+        // Convert to array and sort in descending order
+        return Array.from(groups.entries())
+          .map(([year, locs]) => ({ year, locations: locs }))
+          .sort((a, b) => b.year - a.year); // Descending order
+      }, [locations]);
 
-          {timelineData.map((loc, i) => {
-            const isFocused = focused?.name === loc.name && focused?.year === loc.year;
-            const isShowingDetails = showDetails === (loc.name + loc.year);
+      // Calculate timeline positions based on proportional year gaps
+      const timelineData = useMemo(() => {
+        if (yearGroups.length === 0) return [];
 
-            return (
-              <div key={i} className="timeline-item-wrapper">
-                <div
-                  className={`timeline-dot-wrapper ${isFocused ? 'focused' : ''}`}
-                  style={{ position: 'absolute', top: `${loc.positionY}px` }}
-                  onClick={() => {
-                    setFocused(loc);
-                    setShowDetails(isShowingDetails ? null : loc.name + loc.year);
-                  }}
-                >
-                  <div className="timeline-dot" />
-                  <div className="timeline-label">
-                    <strong>{loc.year}</strong> {loc.name}
+        const totalHeight = window.innerHeight - 80; // Adjust for padding
+
+        // Find the min and max years to calculate the total time span
+        const maxYear = yearGroups[0].year;
+        const minYear = yearGroups[yearGroups.length - 1].year;
+        const totalYearSpan = maxYear - minYear;
+
+        // If all years are the same, use uniform spacing
+        if (totalYearSpan === 0) {
+          return yearGroups.map((group, index) => {
+            const positionY = (index / (yearGroups.length - 1 || 1)) * totalHeight + 40;
+            return { ...group, positionY };
+          });
+        }
+
+        // Calculate positions based on proportional year gaps
+        return yearGroups.map(group => {
+          // Calculate relative position (inverted since we want descending order)
+          const relativePosition = (maxYear - group.year) / totalYearSpan;
+          const positionY = relativePosition * totalHeight; // Add padding
+
+          return {
+            ...group,
+            positionY
+          };
+        });
+      }, [yearGroups]);
+
+      // Find currently focused year group
+      const focusedYearGroup = useMemo(() => {
+        if (!focused) return null;
+        return yearGroups.find(group => group.year === focused.year);
+      }, [focused, yearGroups]);
+
+      const updateFocusBasedOnScroll = (scrollY: number) => {
+        const centerY = scrollY;
+
+        // Find closest year group to current scroll position
+        if (timelineData.length > 0) {
+          const closest = timelineData.reduce((a, b) =>
+            Math.abs(a.positionY - centerY) < Math.abs(b.positionY - centerY) ? a : b
+          );
+
+          // Set the first location from that year as focused
+          if (closest && closest.locations.length > 0) {
+            const newFocused = closest.locations[0];
+            if (!focused || focused.year !== newFocused.year) {
+              setFocused(newFocused);
+            }
+          }
+
+          const maxScroll = window.innerHeight;
+          setProgressHeight((scrollY / maxScroll) * 100);
+        }
+      };
+
+      const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setVirtualScrollY(prev => {
+          const maxScroll = window.innerHeight;
+          const next = Math.max(0, Math.min(prev + e.deltaY/10, maxScroll));
+          updateFocusBasedOnScroll(next);
+          return next;
+        });
+      };
+
+      // Handle clicking on a year in the timeline
+      const handleYearClick = (yearGroup: YearGroup) => {
+        // Set the first location from this year as focused
+        if (yearGroup.locations.length > 0) {
+          setFocused(yearGroup.locations[0]);
+          setShowModal(true);
+        }
+      };
+
+      return (
+        <aside className="timeline-sidebar">
+          <div
+            className="timeline-line-container"
+            onWheel={handleWheel}
+            ref={containerRef}
+          >
+            <div className="timeline-line" />
+            <div className="timeline-line-progress" style={{ height: `${progressHeight}%` }} />
+
+            {timelineData.map((yearGroup, i) => {
+              const isFocused = focused?.year === yearGroup.year;
+
+              return (
+                <div key={i} className="timeline-item-wrapper">
+                  <div
+                    className={`timeline-dot-wrapper ${isFocused ? 'focused' : ''}`}
+                    style={{ position: 'absolute', top: `${yearGroup.positionY}px` }}
+                    onClick={() => handleYearClick(yearGroup)}
+                  >
+                    <div className="timeline-dot" />
+                    <div className="timeline-label">
+                      <strong>{yearGroup.year}</strong>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-    </aside>
-  );
-};
+              );
+            })}
+          </div>
 
-export default Timeline;
+          {showModal && focusedYearGroup && (
+            <div className="timeline-modal-overlay" onClick={() => setShowModal(false)}>
+              <div className="timeline-modal" onClick={e => e.stopPropagation()}>
+                <div className="timeline-modal-header">
+                  <h3>{focusedYearGroup.year}</h3>
+                  <button className="close-button" onClick={() => setShowModal(false)}>×</button>
+                </div>
+                <div className="timeline-modal-content">
+                  {focusedYearGroup.locations.map((loc, i) => (
+                    <div key={i} className="timeline-modal-item">
+                      <h4>{loc.name}</h4>
+                      {loc.job && <div className="timeline-modal-job">{loc.job}</div>}
+                      <p>{loc.details}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </aside>
+      );
+    };
+
+    export default Timeline;
