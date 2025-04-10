@@ -128,6 +128,7 @@
 }
 
 .timeline-experience-column {
+  padding-top: 2rem;
   flex: 1;
   max-width: 800px;
   /* padding: 2rem; */
@@ -139,19 +140,26 @@
 .timeline-experience-column h1 {
   font-weight: 800;
   font-size: 1.8rem;
+  text-align: right;
+  margin-bottom: 1rem;
 }
 
 .timeline-experience-column h2 {
   font-weight: 800;
   font-size: 1.3rem;
+  text-align: right;
 }
 
 .timeline-experience-column h3 {
   font-weight: 400;
   font-size: 1.0rem;
+  text-align: right;
+  margin-top: 0;
+  margin-bottom: 2px;
 }
 
 .timeline-experience-column li {
+  margin-top: 1rem;
   font-weight: 400;
   font-size: 1.0rem;
 }
@@ -166,51 +174,44 @@
   font-size: 1.5rem;
 }
 
-.timeline-header a {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-.timeline-header a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color);
-}
-
 .timeline-exp-date {
   display: flex;
   justify-content: space-between;
   font-size: 1.0rem;
-  color: #3b3b3b;
-  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
 .timeline-exp-date .location {
-  font-weight: 500;
+  color: var(--ocean-color);
+  font-weight: 800;
 }
 
 .timeline-exp-date .date {
+  font-weight: 600;
   font-style: italic;
 }
 
 .timeline-experience-item ul {
-  padding-left: 1.25rem;
+  /* padding-left: 3.25rem; */
   margin: 0;
 }
 
 .timeline-experience-item li {
-  margin-bottom: 0.5rem; /* 👈 adds vertical gap between items */
+  margin-bottom: 0.7rem; /* 👈 adds vertical gap between items */
   line-height: 1.5;
 }
 
 .timeline-links-row {
   display: flex;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
   font-size: 0.9rem;
 }
 
-.timeline-links-row a {
+/* .timeline-links-row a {
   color: var(--secondary-color);
   text-decoration: none;
 }
@@ -218,7 +219,7 @@
 .timeline-links-row a:hover {
   text-decoration: underline;
   border-color: var(--primary-color);
-}
+} */
 
 .timeline-gap-indicator {
   position: absolute;

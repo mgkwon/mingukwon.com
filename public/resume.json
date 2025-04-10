@@ -4,7 +4,7 @@
       "title": "Senior Robotics Software Engineer",
       "company": "Remy Robotics",
       "link": "https://remyrobotics.com/",
-      "location": "Barcelona, Spain",
+      "location": "Barcelona 🇪🇸",
       "start_date": "2019-07",
       "end_date": "",
       "points": [
@@ -25,7 +25,7 @@
       "title": "Lead Robotics Software Engineer",
       "company": "Dorabot",
       "link": "https://www.dorabot.com/",
-      "location": "Shenzhen, China",
+      "location": "Shenzhen 🇨🇳",
       "start_date": "2018-07",
       "end_date": "2019-06",
       "points": [
@@ -37,7 +37,7 @@
       "title": "Robotics Software Engineer",
       "company": "Dorabot",
       "link": "https://www.dorabot.com/",
-      "location": "Shenzhen, China",
+      "location": "Shenzhen 🇨🇳",
       "start_date": "2016-05",
       "end_date": "2018-06",
       "points": [
@@ -52,7 +52,7 @@
       "title": "Co-Founder",
       "company": "YunLab",
       "link": "",
-      "location": "Waterloo, Ontario",
+      "location": "Waterloo 🇨🇦",
       "start_date": "2015-05",
       "end_date": "2016-04",
       "points": [
@@ -64,7 +64,7 @@
       "title": "Mechanical Designer, Intern",
       "company": "Blackberry",
       "link": "",
-      "location": "Waterloo, Ontario",
+      "location": "Waterloo 🇨🇦",
       "start_date": "2014-05",
       "end_date": "2014-08",
       "points": [
@@ -72,12 +72,12 @@
         "Engineered a high-resolution PCB imaging system using image stitching, improving inspection accuracy and efficiency."
       ]
     },
-    
+
     {
       "title": "Mechanical Designer, Intern",
       "company": "Blackberry",
       "link": "",
-      "location": "Ottawa, Ontario",
+      "location": "Ottawa 🇨🇦",
       "start_date": "2013-09",
       "end_date": "2013-12",
       "points": [
@@ -91,8 +91,8 @@
     {
       "title": "Controls Designer, Intern",
       "company": "General Motors",
-      "link": "",
-      "location": "St. Catharines, Ontario",
+      "link": "https://www.gm.ca/en/home/company/canada/stcatharines.html",
+      "location": "St. Catharines 🇨🇦",
       "start_date": "2013-01",
       "end_date": "2013-04",
       "points": [
@@ -105,19 +105,48 @@
       "title": "Software Verification, Intern",
       "company": "Honeywell Aerospace",
       "link": "",
-      "location": "Kanata, Ontario",
+      "location": "Kanata 🇨🇦",
       "start_date": "2012-05",
       "end_date": "2012-08",
       "points": [
         "Automated Hardware-In-the-Loop (HIL) test cases for satellite communication software."
       ]
+    },
+    {
+      "title": "Software Verification, Intern",
+      "company": "Honeywell Aerospace",
+      "link": "",
+      "location": "Kanata 🇨🇦",
+      "start_date": "2011-09",
+      "end_date": "2011-12",
+      "points": [
+        "Automated Hardware-In-the-Loop (HIL) test cases for satellite communication software."
+      ]
+    },
+    {
+      "title": "Research Assistant, Intern",
+      "company": "University of Waterloo",
+      "link": "",
+      "location": "Waterloo 🇨🇦",
+      "start_date": "2010-01",
+      "end_date": "2010-04",
+      "points": []
+    },
+    {
+      "title": "B.AS. Honours Mechatronics Engineering Co-op",
+      "company": "University of Waterloo",
+      "Link": "https://uwaterloo.ca/future-students/programs/mechatronics-engineering/",
+      "Location": "Waterloo 🇨🇦",
+      "start_date": "2009-09",
+      "end_date": "2015-05",
+      "points": []
     }
   ],
   "Education": {
     "School": "University of Waterloo",
     "Link": "https://uwaterloo.ca/future-students/programs/mechatronics-engineering/",
     "Degree": "B.AS. Honours Mechatronics Engineering Co-op",
-    "Location": "Waterloo, Ontario",
+    "Location": "Waterloo 🇨🇦",
     "date": "2015-05"
   },
   "Skills": {

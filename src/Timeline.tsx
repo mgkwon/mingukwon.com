@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Timeline.css';
+import Header from './Header'
 
 export type Location = {
   year: number;
@@ -148,6 +149,7 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
       <div className="timeline-experience-column">
         {focused?.year === new Date().getFullYear() && (
           <div className="timeline-header">
+            {/* <Header/> */}
             <h1>MINGU KWON</h1>
             <div className="timeline-links-row">
               <a href="mailto:mgskwon@gmail.com">mgskwon@gmail.com</a>
@@ -155,7 +157,7 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
               <a href="https://moxfield.com/users/bisketo" target="_blank">Moxfield</a>
               <a href="https://heronnews.com" target="_blank">HeronNews</a>
             </div>
-            <h2>Roboticist living in Spain.</h2>
+            {/* <h2>Roboticist living in Spain.</h2> */}
           </div>
         )}
         {timelineData
@@ -163,11 +165,20 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
           ?.experiences?.map((exp, j) => (
             <div key={j} className="timeline-experience-item">
               <h1>{exp.title}</h1>
-              <h2>{exp.company}</h2>
-              <h3 className="timeline-exp-date">
-                <span className="location">{exp.location}</span>
-                <span className="date">{exp.start_date} – {exp.end_date || 'Present'}</span>
+              <h3>
+                {exp.link ? (
+                  <a href={exp.link} target="_blank" rel="noopener noreferrer">
+                    {exp.company}
+                  </a>
+                ) : (
+                  exp.company
+                )}
               </h3>
+              <h3>{exp.start_date} – {exp.end_date || 'Present'}, {exp.location}</h3>
+              {/* <h3 className="timeline-exp-date">
+                <span className="date">{exp.start_date} – {exp.end_date || 'Present'}</span>
+                <span className="location">{exp.location}</span>
+              </h3> */}
               <ul>
                 {exp.points.map((pt, k) => <li key={k}>{pt}</li>)}
               </ul>
