@@ -147,12 +147,13 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
         {focused?.year === new Date().getFullYear() && (
           <div className="timeline-header">
             <h1>MINGU KWON</h1>
-            <h2>Robotist</h2>
-            {/* <p><a href="mailto:mgskwon@gmail.com">mgskwon@gmail.com</a></p>
-            <p><a href="https://www.linkedin.com/in/mingukwon/" target="_blank">LinkedIn</a></p>
-            <p><a href="https://moxfield.com/users/bisketo" target="_blank">Moxfield</a></p> */}
-            <h2>Projects</h2>
-            <p><a href="https://heronnews.com" target="_blank">HeronNews</a></p>
+            <div className="timeline-links-row">
+              <a href="mailto:mgskwon@gmail.com">mgskwon@gmail.com</a>
+              <a href="https://www.linkedin.com/in/mingukwon/" target="_blank">LinkedIn</a>
+              <a href="https://moxfield.com/users/bisketo" target="_blank">Moxfield</a>
+              <a href="https://heronnews.com" target="_blank">HeronNews</a>
+            </div>
+            <h2>Roboticist living in Spain.</h2>
           </div>
         )}
         {timelineData

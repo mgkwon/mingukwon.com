@@ -329,3 +329,21 @@
   margin-bottom: 0.5rem; /* 👈 adds vertical gap between items */
   line-height: 1.5;
 }
+
+.timeline-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.timeline-links-row a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.timeline-links-row a:hover {
+  text-decoration: underline;
+  border-color: var(--ocean-color);
+}
