@@ -1,16 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,800&display=swap');
+
 :root {
-  --background-color: #FBF8EF;
+  /* Colours */
+  --color-primary: #3eb0ef;
+  --color-base: #131313;
+  --color-border: #ddd;
+  --color-bg: #f8f8f8;
+  /* --background-color: #FBF8EF; */
+  --background-color: #DCD7C9;
+
   --ocean-color: #123458;
-  --land-color: #B17F59;
-  --primary-color: #9BEC00;
+  --land-color: #b1825f;
+  --primary-color: #16FF00;
   --secondary-color: #1E212D;
-  --tertiary-color: #EAD196;
+  --tertiary-color: #dcc590;
   --text-color: #000000;
   --link-hover-color: #020202;
 
+  /* Fonts */
+  --font-sans-serif: 'Muli', sans-serif;
+  --font-serif: Georgia, Times, serif;
+  --font-mono: Menlo, Courier, monospace;
+  --font-light: 100;
+  --font-normal: 400;
+  --font-bold: 700;
+  --font-heavy: 800;
+
+  /* Breakpoints */
+  --xlarge: 1680px;
+  --large: 1280px;
+  --medium: 980px;
+  --small: 740px;
+  --xsmall: 480px;
+
+  /* Sizes */
+  --height: 4rem;
+  --margin: 2rem;
+  --radius: 0.5rem;
+
   /* font-family: "Lora", serif; */
   /* font-family: "Domine", serif; */
-  font-family: "Mulish", sans-serif;;
+  font-family: var(--font-sans-serif);
   line-height: 1.5;
   font-weight: 400;
   font-optical-sizing: auto;

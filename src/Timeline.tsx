@@ -61,6 +61,7 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
   const timelineData = useMemo(() => {
     const totalHeight = dimensions.height - 80;
     if (yearGroups.length === 0) return [];
+    yearGroups[yearGroups.length - 1].year = 2000;
     const maxYear = yearGroups[0].year;
     const minYear = yearGroups[yearGroups.length - 1].year;
     const span = maxYear - minYear || 1;
@@ -108,7 +109,7 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
       <div className="timeline-line-container" onWheel={handleWheel} ref={containerRef}>
         <div className="timeline-line" />
         <div className="timeline-line-progress" style={{ height: `${progressHeight}%` }} />
-  
+
         {timelineData.map((yearGroup, i) => {
           const isFocused = focused?.year === yearGroup.year;
           return (
@@ -126,22 +127,23 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
                       top: target,
                       behavior: 'smooth'
                     });
+                    setVirtualScrollY(target);
                     updateFocusBasedOnScroll(target);
                   }
-                
+
                   if (yearGroup.locations.length > 0) {
                     setFocused(yearGroup.locations[0]);
                   }
                 }}
               >
                 <div className="timeline-dot" />
-                <div className="timeline-label"><strong>{yearGroup.year}</strong></div>
+                <div className="timeline-label"><strong>{yearGroup.year == 2000 ? 1990 : yearGroup.year}</strong></div>
               </div>
             </div>
           );
         })}
       </div>
-  
+
       {/* Experience column — separate from timeline scroll */}
       <div className="timeline-experience-column">
         {focused?.year === new Date().getFullYear() && (
@@ -165,14 +167,15 @@ const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions 
               <h3 className="timeline-exp-date">
                 <span className="location">{exp.location}</span>
                 <span className="date">{exp.start_date} – {exp.end_date || 'Present'}</span>
-              </h3>              <ul>
+              </h3>
+              <ul>
                 {exp.points.map((pt, k) => <li key={k}>{pt}</li>)}
               </ul>
             </div>
           ))}
       </div>
     </aside>
-  );  
+  );
 };
 
 export default Timeline;
