@@ -20,66 +20,42 @@
         "ISO_A2": "CA",
         "lat": 43.4643,
         "lng": -80.5204,
-        "year": 2009,
-        "details": "University of Waterloo, Robotics. Foundational education in technology."
+        "year": 2009
     },
     {
         "name": "Waterloo, Canada",
         "ISO_A2": "CA",
         "lat": 43.4643,
         "lng": -80.5204,
-        "year": 2010,
-        "job": "Research Assistant, Intern",
-        "details": ""
+        "year": 2010
     },
     {
         "name": "Kanata, Canada",
         "ISO_A2": "CA",
         "lat": 45.3059,
         "lng": -75.8980,
-        "year": 2011,
-        "month": 1,
-        "job": "Software Verification, Intern",
-        "details": "Intern at Honeywell Aerospace, automated HIL test cases for satellite communications."
-    },
-    {
-        "name": "Kanata, Canada",
-        "ISO_A2": "CA",
-        "lat": 45.3059,
-        "lng": -75.8980,
-        "year": 2011,
-        "month": 9,
-        "job": "Software Verification, Intern",
-        "details": "Intern at Honeywell Aerospace, automated HIL test cases for satellite communications."
+        "year": 2012
     },
     {
         "name": "St. Catharines, Canada",
         "ISO_A2": "CA",
         "lat": 43.1594,
         "lng": -79.2469,
-        "year": 2013,
-        "month": 1,
-        "job": "Controls Engineer, Intern",
-        "details": "Controls Designer Intern at General Motors, worked on AGV and conveyor systems integration."
+        "year": 2013
     },
     {
         "name": "Waterloo, Canada",
         "ISO_A2": "CA",
         "lat": 43.4643,
         "lng": -80.5204,
-        "year": 2013,
-        "month": 9,
-        "job": "Mechanical Designer, Intern",
-        "details": "Intern at Blackberry, developed PCB inspection systems using computer vision techniques."
+        "year": 2013
     },
     {
         "name": "Waterloo, Canada",
         "ISO_A2": "CA",
-        "lat": 43.4643,
-        "lng": -80.5204,
-        "year": 2014,
-        "job": "Mechanical Designer, Intern",
-        "details": "Co-founded Yunlab, developed machine monitoring systems integrated with university platforms."
+        "lat": 45.3439,
+        "lng": -75.9094,
+        "year": 2014
     },
     {
         "name": "Waterloo, Canada",
@@ -95,35 +71,27 @@
         "ISO_A2": "CN",
         "lat": 22.5431,
         "lng": 114.0579,
-        "year": 2016,
-        "job":" Robotics Software Engineer",
-        "details": "Robotics Software Engineer at Dorabot, working on planning, tracking, and vision systems for logistics robots."
+        "year": 2016
     },
     {
         "name": "Shenzhen, China",
         "ISO_A2": "CN",
         "lat": 22.5431,
         "lng": 114.0579,
-        "year": 2018,
-        "job": "Lead Robotics Software Engineer",
-        "details": "Lead Robotics Software Engineer at Dorabot, leading development of warehouse robotics solutions."
+        "year": 2018
     },
     {
         "name": "Barcelona, Spain",
         "ISO_A2": "ES",
         "lat": 41.3851,
         "lng": 2.1734,
-        "year": 2019,
-        "job": "Senior Robotics Software Engineer",
-        "details": "Full-time robotics engineer. Leading innovation in European tech scene while enjoying Mediterranean lifestyle."
+        "year": 2019
     },
     {
         "name": "Barcelona, Spain",
         "ISO_A2": "ES",
         "lat": 41.3851,
         "lng": 2.1734,
-        "year": 2025,
-        "job": "Senior Robotics Software Engineer",
-        "details": "Full-time robotics engineer. Leading innovation in European tech scene while enjoying Mediterranean lifestyle."
+        "year": 2025
     }
 ]

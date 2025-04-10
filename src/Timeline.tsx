@@ -1,194 +1,177 @@
-    import React, { useEffect, useMemo, useRef, useState } from 'react';
-    import './Timeline.css';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import './Timeline.css';
 
-    export type Location = {
-      year: number;
-      month?: number;
-      name: string;
-      details: string;
-      lat: number;
-      lng: number;
-      ISO_A2: string;
-      job?: string;
-    };
+export type Location = {
+  year: number;
+  month?: number;
+  name: string;
+  details: string;
+  lat: number;
+  lng: number;
+  ISO_A2: string;
+  job?: string;
+};
 
-    type Props = {
-      locations: Location[];
-      focused: Location | null;
-      setFocused: (loc: Location) => void;
-    };
+export type Experience = {
+  title: string;
+  company: string;
+  link: string;
+  location: string;
+  start_date: string;
+  end_date: string;
+  points: string[];
+};
 
-    type YearGroup = {
-      year: number;
-      locations: Location[];
-    };
+type Props = {
+  locations: Location[];
+  focused: Location | null;
+  setFocused: (loc: Location) => void;
+  dimensions: { width: number; height: number };
+};
 
-    const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions }) => {
-      const containerRef = useRef<HTMLDivElement>(null);
-      const [virtualScrollY, setVirtualScrollY] = useState(0);
-      const [progressHeight, setProgressHeight] = useState(0);
-      const [showModal, setShowModal] = useState(false);
+type YearGroup = {
+  year: number;
+  locations: Location[];
+  experiences?: Experience[];
+};
 
-      // Group locations by year and sort in descending order
-      const yearGroups = useMemo(() => {
-        const groups = new Map<number, Location[]>();
+const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [virtualScrollY, setVirtualScrollY] = useState(0);
+  const [progressHeight, setProgressHeight] = useState(0);
+  const [experiences, setExperiences] = useState<Experience[]>([]);
 
-        // Group locations by year
-        locations.forEach(loc => {
-          if (!groups.has(loc.year)) {
-            groups.set(loc.year, []);
-          }
-          groups.get(loc.year)?.push(loc);
-        });
+  useEffect(() => {
+    fetch('/resume.json')
+      .then(res => res.json())
+      .then(data => setExperiences(data.Experience || []));
+  }, []);
 
-        // Convert to array and sort in descending order
-        return Array.from(groups.entries())
-          .map(([year, locs]) => ({ year, locations: locs }))
-          .sort((a, b) => b.year - a.year); // Descending order
-      }, [locations]);
+  const yearGroups = useMemo(() => {
+    const groups = new Map<number, Location[]>();
+    locations.forEach(loc => {
+      if (!groups.has(loc.year)) groups.set(loc.year, []);
+      groups.get(loc.year)?.push(loc);
+    });
+    return Array.from(groups.entries())
+      .map(([year, locs]) => ({ year, locations: locs }))
+      .sort((a, b) => b.year - a.year);
+  }, [locations]);
 
-      // Calculate timeline positions based on proportional year gaps
-      const timelineData = useMemo(() => {
-        if (yearGroups.length === 0) return [];
+  const timelineData = useMemo(() => {
+    const totalHeight = dimensions.height - 80;
+    if (yearGroups.length === 0) return [];
+    const maxYear = yearGroups[0].year;
+    const minYear = yearGroups[yearGroups.length - 1].year;
+    const span = maxYear - minYear || 1;
 
-        const totalHeight = dimensions.height - 80; // Adjust for padding
+    return yearGroups.map(group => {
+      const rel = (maxYear - group.year) / span;
+      const positionY = rel * totalHeight + 30;
+      const expMatches = experiences.filter(exp => {
+        const startY = parseInt(exp.start_date.slice(0, 4));
+        return group.year === startY;
+      });
 
-        // Find the min and max years to calculate the total time span
-        const maxYear = yearGroups[0].year;
-        const minYear = yearGroups[yearGroups.length - 1].year;
-        const totalYearSpan = maxYear - minYear;
+      return { ...group, positionY, experiences: expMatches };
+    });
+  }, [yearGroups, experiences, dimensions]);
 
-        // If all years are the same, use uniform spacing
-        if (totalYearSpan === 0) {
-          return yearGroups.map((group, index) => {
-            const positionY = (index / (yearGroups.length - 1 || 1)) * totalHeight + 40;
-            return { ...group, positionY };
-          });
-        }
+  const updateFocusBasedOnScroll = (scrollY: number) => {
+    const centerY = scrollY;
+    if (timelineData.length > 0) {
+      const closest = timelineData.reduce((a, b) =>
+        Math.abs(a.positionY - centerY) < Math.abs(b.positionY - centerY) ? a : b
+      );
+      if (closest && closest.locations.length > 0) {
+        const newFocused = closest.locations[0];
+        if (!focused || focused.year !== newFocused.year) setFocused(newFocused);
+      }
+      const maxScroll = dimensions.height;
+      setProgressHeight((scrollY / maxScroll) * 100);
+    }
+  };
 
-        // Calculate positions based on proportional year gaps
-        return yearGroups.map(group => {
-          // Calculate relative position (inverted since we want descending order)
-          const relativePosition = (maxYear - group.year) / totalYearSpan;
-          const positionY = relativePosition * totalHeight; // Add padding
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setVirtualScrollY(prev => {
+      const maxScroll = dimensions.height;
+      const next = Math.max(0, Math.min(prev + e.deltaY / 10, maxScroll));
+      updateFocusBasedOnScroll(next);
+      return next;
+    });
+  };
 
-          return {
-            ...group,
-            positionY
-          };
-        });
-      }, [yearGroups, dimensions]);
-
-      // Find currently focused year group
-      const focusedYearGroup = useMemo(() => {
-        if (!focused) return null;
-        return yearGroups.find(group => group.year === focused.year);
-      }, [focused, yearGroups]);
-
-      const updateFocusBasedOnScroll = (scrollY: number) => {
-        const centerY = scrollY;
-
-        // Find closest year group to current scroll position
-        if (timelineData.length > 0) {
-          const closest = timelineData.reduce((a, b) =>
-            Math.abs(a.positionY - centerY) < Math.abs(b.positionY - centerY) ? a : b
-          );
-
-          // Set the first location from that year as focused
-          if (closest && closest.locations.length > 0) {
-            const newFocused = closest.locations[0];
-            if (!focused || focused.year !== newFocused.year) {
-              setFocused(newFocused);
-            }
-          }
-
-          const maxScroll = window.innerHeight;
-          setProgressHeight((scrollY / maxScroll) * 100);
-        }
-      };
-
-      const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        setVirtualScrollY(prev => {
-          const maxScroll = window.innerHeight;
-          const next = Math.max(0, Math.min(prev + e.deltaY/10, maxScroll));
-          updateFocusBasedOnScroll(next);
-          return next;
-        });
-      };
-
-      // Handle clicking on a year in the timeline
-      const handleYearClick = (yearGroup: YearGroup) => {
-        // Set the first location from this year as focused
-        if (yearGroup.locations.length > 0) {
-          setFocused(yearGroup.locations[0]);
-          setShowModal(true);
-        }
-      };
-
-      return (
-        <aside className="timeline-sidebar">
-          <div
-            className="timeline-line-container"
-            onWheel={handleWheel}
-            ref={containerRef}
-          >
-            <div className="timeline-line" />
-            <div className="timeline-line-progress" style={{ height: `${progressHeight}%` }} />
-
-            {timelineData.map((yearGroup, i) => {
-              const isFocused = focused?.year === yearGroup.year;
-
-              return (
-                <div key={i} className="timeline-item-wrapper">
-                  <div
-                    className={`timeline-dot-wrapper ${isFocused ? 'focused' : ''}`}
-                    style={{ position: 'absolute', top: `${yearGroup.positionY}px` }}
-                    onClick={() => handleYearClick(yearGroup)}
-                  >
-                    <div className="timeline-dot" />
-                    <div className="timeline-label">
-                      <strong>{yearGroup.year}</strong>
-                    </div>
-                    {isFocused && (
-                      <div className="timeline-job-pill">
-                        {yearGroup.locations
-                          .filter(loc => loc.job)
-                          .map((loc, i) => (
-                            <span key={i}>
-                              {loc.job}
-                              {i < yearGroup.locations.filter(l => l.job).length - 1 && ', '}
-                            </span>
-                          ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {showModal && focusedYearGroup && (
-            <div className="timeline-modal-overlay" onClick={() => setShowModal(false)}>
-              <div className="timeline-modal" onClick={e => e.stopPropagation()}>
-                <div className="timeline-modal-header">
-                  <h3>{focusedYearGroup.year}</h3>
-                  <button className="close-button" onClick={() => setShowModal(false)}>×</button>
-                </div>
-                <div className="timeline-modal-content">
-                  {focusedYearGroup.locations.map((loc, i) => (
-                    <div key={i} className="timeline-modal-item">
-                      <h4>{loc.name}</h4>
-                      {loc.job && <div className="timeline-modal-job">{loc.job}</div>}
-                      <p>{loc.details}</p>
-                    </div>
-                  ))}
-                </div>
+  return (
+    <aside className="timeline-sidebar">
+      {/* Timeline scroll column */}
+      <div className="timeline-line-container" onWheel={handleWheel} ref={containerRef}>
+        <div className="timeline-line" />
+        <div className="timeline-line-progress" style={{ height: `${progressHeight}%` }} />
+  
+        {timelineData.map((yearGroup, i) => {
+          const isFocused = focused?.year === yearGroup.year;
+          return (
+            <div
+              key={i}
+              className="timeline-item-wrapper"
+              style={{ top: `${yearGroup.positionY}px`, position: 'absolute' }}
+            >
+              <div
+                className={`timeline-dot-wrapper ${isFocused ? 'focused' : ''}`}
+                onClick={() => {
+                  if (containerRef.current) {
+                    const target = yearGroup.positionY - 2 ;
+                    containerRef.current.scrollTo({
+                      top: target,
+                      behavior: 'smooth'
+                    });
+                    updateFocusBasedOnScroll(target);
+                  }
+                
+                  if (yearGroup.locations.length > 0) {
+                    setFocused(yearGroup.locations[0]);
+                  }
+                }}
+              >
+                <div className="timeline-dot" />
+                <div className="timeline-label"><strong>{yearGroup.year}</strong></div>
               </div>
             </div>
-          )}
-        </aside>
-      );
-    };
+          );
+        })}
+      </div>
+  
+      {/* Experience column — separate from timeline scroll */}
+      <div className="timeline-experience-column">
+        {focused?.year === new Date().getFullYear() && (
+          <div className="timeline-header">
+            <h1>MINGU KWON</h1>
+            <h2>Robotist</h2>
+            {/* <p><a href="mailto:mgskwon@gmail.com">mgskwon@gmail.com</a></p>
+            <p><a href="https://www.linkedin.com/in/mingukwon/" target="_blank">LinkedIn</a></p>
+            <p><a href="https://moxfield.com/users/bisketo" target="_blank">Moxfield</a></p> */}
+            <h2>Projects</h2>
+            <p><a href="https://heronnews.com" target="_blank">HeronNews</a></p>
+          </div>
+        )}
+        {timelineData
+          .find(group => group.year === focused?.year)
+          ?.experiences?.map((exp, j) => (
+            <div key={j} className="timeline-experience-item">
+              <h1>{exp.title}</h1>
+              <h2>{exp.company}</h2>
+              <h3 className="timeline-exp-date">
+                <span className="location">{exp.location}</span>
+                <span className="date">{exp.start_date} – {exp.end_date || 'Present'}</span>
+              </h3>              <ul>
+                {exp.points.map((pt, k) => <li key={k}>{pt}</li>)}
+              </ul>
+            </div>
+          ))}
+      </div>
+    </aside>
+  );  
+};
 
-    export default Timeline;
+export default Timeline;

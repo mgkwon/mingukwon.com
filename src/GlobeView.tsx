@@ -32,6 +32,12 @@ export default function GlobeView({ focus, locations, dimensions}) {
         lng,
         altitude: 1.8
       }, 1000); // 1000ms animation duration
+
+      if (globeRef.current && globeRef.current.controls()) {
+        const controls = globeRef.current.controls();
+        controls.minDistance = 400; // ⬅️ Min zoom (closer = smaller number)
+        controls.maxDistance = 700; // ⬅️ Max zoom out
+      }
     }
   }, [focus]);
 
@@ -64,7 +70,7 @@ export default function GlobeView({ focus, locations, dimensions}) {
   return (
     <Globe
       ref={globeRef}
-      width={dimensions.width - 400} // assuming your sidebar is 300px
+      width={dimensions.width - 1050} // assuming your sidebar is 300px
       height={dimensions.height}
       globeMaterial={globeMaterial}
       backgroundColor={getColorFromVar("--background-color")}
@@ -78,7 +84,7 @@ export default function GlobeView({ focus, locations, dimensions}) {
         validISOs.has(d.properties?.ISO_A2) ? getColorFromVar("--secondary-color") : getColorFromVar("--land-color")
       }
       polygonAltitude={(d) =>
-        validISOs.has(d.properties?.ISO_A2) ? 0.012 : 0.006}
+        validISOs.has(d.properties?.ISO_A2) ? 0.012 : 0.007}
       polygonStrokeColor={() => getColorFromVar("--tertiary-color")}
       polygonsTransitionDuration={300}
 

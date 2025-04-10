@@ -1,183 +1,174 @@
 {
-    "name": "Mingu Kwon",
-    "contact": {
-        "phone": "+34 690721025",
-        "email": "mgskwon@gmail.com",
-        "website": "https://www.mingukwon.com"
+  "Experience": [
+    {
+      "title": "Senior Robotics Software Engineer",
+      "company": "Remy Robotics",
+      "link": "https://remyrobotics.com/",
+      "location": "Barcelona, Spain",
+      "start_date": "2019-07",
+      "end_date": "",
+      "points": [
+        "Spearheaded development and launch of autonomous cloud kitchens, leveraging robotics and AI to reduce food waste and address labor shortages.",
+        "Led a cross-functional team, mentoring engineers, defining sprint stories, and setting OKRs to align engineering with business goals, improving project delivery and team efficiency.",
+        "Achieved and maintained a robot task success rate above 99.9% by optimizing decision-making with Hierarchical Finite State Machines (HFSM) and Behavior Trees (BT).",
+        "Enhanced human-robot interaction by developing an app that uses an LLM to translate natural language into PDDL goals for high-level task planning, and used MLflow to track performance metrics.",
+        "Improved mAP by 25% using synthetic data generation with Unity and advanced augmentation techniques for instance segmentation of food ingredients with Mask R-CNN.",
+        "Enhanced real-time stereo matching and depth perception by integrating HITNet into OAK-D stereo cameras using OpenVINO and ONNX, improving system accuracy and performance.",
+        "Reduced mean orientation error (MOE) by 80% in object pose estimation through scene reconstruction and ICP registration, enhancing accuracy in confined-space manipulations.",
+        "Reduced planning and execution times by 50% and ensured deterministic outcomes by developing a custom search-based(A*) path planner.",
+        "Enhanced robotic insertion accuracy and robustness by applying sensor fusion (encoder data and object surface estimation) with Kalman filtering for precise package angle determination.",
+        "Ensured operational reliability by implementing comprehensive logging and metrics collection using AWS CloudWatch, enabling real-time insights and alerts.",
+        "Streamlined the development pipeline and reduced deployment times by automating large-scale node deployments with Ansible, Docker, and GitLab CI/CD."
+      ]
     },
-    "experience": [
-        {
-            "title": "Senior Robotics Software Engineer",
-            "company": "Remy Robotics",
-            "location": "Barcelona, Spain",
-            "date": "July 2019 – Present",
-            "achievements": [
-                "Spearheaded development and launch of autonomous cloud kitchens, leveraging robotics and AI to reduce food waste and address labor shortages.",
-                "Led a cross-functional team, mentoring engineers, defining sprint stories, and setting OKRs to align engineering with business goals, improving project delivery and team efficiency.",
-                "Achieved and maintained a robot task success rate above 99.9% by optimizing decision-making with Hierarchical Finite State Machines (HFSM) and Behavior Trees (BT).",
-                "Enhanced human-robot interaction by developing an app that uses an LLM to translate natural language into PDDL goals for high-level task planning, and used MLflow to track performance metrics.",
-                "Improved mAP by 25% using synthetic data generation with Unity and advanced augmentation techniques for instance segmentation of food ingredients with Mask R-CNN.",
-                "Enhanced real-time stereo matching and depth perception by integrating HITNet into OAK-D stereo cameras using OpenVINO and ONNX.",
-                "Reduced mean orientation error (MOE) by 80% in object pose estimation through scene reconstruction and ICP registration.",
-                "Reduced planning and execution times by 50% and ensured deterministic outcomes by developing a custom search-based(A*) path planner.",
-                "Enhanced robotic insertion accuracy with Kalman filtering for precise package angle determination.",
-                "Implemented comprehensive logging and metrics with AWS CloudWatch.",
-                "Automated node deployments using Ansible, Docker, and GitLab CI/CD."
-            ]
-        },
-        {
-            "title": "Lead Robotics Software Engineer",
-            "company": "Dorabot",
-            "location": "Shenzhen, China",
-            "date": "July 2018 – June 2019",
-            "achievements": [
-                "Led development of autonomous warehouse solutions for sorting, palletization, and loading/unloading.",
-                "Managed a team developing motion planning, grasp planning, and control libraries."
-            ]
-        },
-        {
-            "title": "Robotics Software Engineer",
-            "company": "Dorabot",
-            "location": "Shenzhen, China",
-            "date": "May 2016 – June 2018",
-            "achievements": [
-                "Integrated sampling-based and search-based planners.",
-                "Implemented dynamic object tracking with sensor fusion (ToF cameras, IR sensors, and encoders).",
-                "Implemented object detection, segmentation, and pose estimation using OpenCV and PCL.",
-                "Optimized planning efficiency by 25% using `perf` and OpenMP.",
-                "Developed admittance control using a 6D force-torque sensor."
-            ]
-        },
-        {
-            "title": "Co-Founder",
-            "company": "Yunlab",
-            "location": "Waterloo, Ontario",
-            "date": "May 2015 – April 2016",
-            "achievements": [
-                "Developed a machine shop monitoring system and dashboard.",
-                "Implemented time series k-means clustering for power consumption analysis."
-            ]
-        },
-        {
-            "title": "Mechanical Designer, Intern",
-            "company": "Blackberry",
-            "location": "Waterloo, Ontario",
-            "date": "Sept 2013 – Dec 2013",
-            "achievements": [
-                "Designed a PCB space analysis algorithm using ImageJ and decision trees.",
-                "Engineered a high-resolution PCB imaging system using image stitching."
-            ]
-        },
-        {
-            "title": "Controls Designer, Intern",
-            "company": "General Motors",
-            "location": "St. Catharines, Ontario",
-            "date": "Jan 2013 – Apr 2013",
-            "achievements": [
-                "Enhanced HMI software and PLC logic for AGVs and conveyors.",
-                "Integrated line monitoring with PLC and MySQL.",
-                "Developed a Visual Basic app to prioritize fault messages."
-            ]
-        },
-        {
-            "title": "Software Verification, Intern",
-            "company": "Honeywell Aerospace",
-            "location": "Kanata, Ontario",
-            "date": "May 2012 – Aug 2012, Sep 2011 – Dec 2011",
-            "achievements": [
-                "Automated Hardware-In-the-Loop (HIL) test cases for satellite communication software."
-            ]
-        }
-    ],
-    "education": {
-        "institution": "University of Waterloo",
-        "degree": "B.AS. Honours Mechatronics Engineering Co-op",
-        "graduationDate": "May 2015"
+    {
+      "title": "Lead Robotics Software Engineer",
+      "company": "Dorabot",
+      "link": "https://www.dorabot.com/",
+      "location": "Shenzhen, China",
+      "start_date": "2018-07",
+      "end_date": "2019-06",
+      "points": [
+        "Led development of autonomous warehouse solutions for sorting, palletization, and loading/unloading, achieving throughput targets with high reliability.",
+        "Managed a team developing motion planning, grasp planning, and control libraries, overseeing system integration and cross-team collaboration."
+      ]
     },
-    "skills": {
-        "computer_vision_ml": [
-            "Object detection",
-            "Instance Segmentation",
-            "Tracking",
-            "Pose Estimation",
-            "3D Reconstruction",
-            "OpenCV",
-            "Open3D",
-            "PCL",
-            "PyTorch"
-        ],
-        "manipulation": [
-            "Motion Planning",
-            "Sensor Fusion",
-            "Behavior Trees",
-            "Finite State Machines",
-            "PDDL",
-            "Visual Servoing",
-            "Force Control"
-        ],
-        "programming": [
-            "C++",
-            "Python",
-            "ROS"
-        ],
-        "simulation": [
-            "Unity",
-            "Nvidia Isaac",
-            "Gazebo",
-            "MATLAB"
-        ],
-        "dev_cloud": [
-            "Linux",
-            "Git",
-            "CI/CD",
-            "Ansible",
-            "Docker",
-            "AWS",
-            "FastAPI",
-            "RPC",
-            "REST",
-            "MongoDB",
-            "MySQL",
-            "GraphQL"
-        ],
-        "leadership": [
-            "Scrum",
-            "OKRs",
-            "Mentorship",
-            "Cross-functional Collaboration"
-        ]
+    {
+      "title": "Robotics Software Engineer",
+      "company": "Dorabot",
+      "link": "https://www.dorabot.com/",
+      "location": "Shenzhen, China",
+      "start_date": "2016-05",
+      "end_date": "2018-06",
+      "points": [
+        "Integrated sampling-based and search-based planners, accommodating various constraints to optimize performance.",
+        "Implemented dynamic object tracking with sensor fusion of Time-of-Flight(ToF) cameras, IR sensors, and encoders to optimize visual servoing performance on a conveyor.",
+        "Implemented object detection, segmentation, and pose estimation for boxes and envelopes using classical computer vision techniques with OpenCV and PCL.",
+        "Optimized planning efficiency by 25% by profiling bottlenecks using perf and implementing multithreaded constraints checking in C++ with OpenMP.",
+        "Developed an admittance control for contact-driven tasks like box stacking, utilizing a 6D force-torque sensor."
+      ]
     },
-    "publications": [
-        {
-            "authors": [
-                "Kwon M.",
-                "[et al]"
-            ],
-            "title": "A Robotic System for Autonomous Grasping and Manipulation",
-            "book": "Robotic Grasping and Manipulation 2016",
-            "editors": "Sun Y., Falco J.",
-            "year": 2018
-        },
-        {
-            "authors": [
-                "Liu S.",
-                "[et al, Kwon M.]"
-            ],
-            "title": "Grasp quality evaluation and planning for objects with negative curvature",
-            "year": 2017
-        }
-    ],
-    "interests": [
-        "Video Games",
-        "Football",
-        "Padel",
-        "Board Games",
-        "DJing",
-        "Magic The Gathering"
-    ],
-    "links": {
-        "university_program": "https://uwaterloo.ca/future-students/programs/mechatronics-engineering/",
-        "remy_robotics": "https://remyrobotics.com/",
-        "dorabot": "https://www.dorabot.com/"
+    {
+      "title": "Co-Founder",
+      "company": "YunLab",
+      "link": "",
+      "location": "Waterloo, Ontario",
+      "start_date": "2015-05",
+      "end_date": "2016-04",
+      "points": [
+        "Developed a machine shop monitoring system and analysis dashboard, integrated into the University website for students to check equipment usage.",
+        "Implemented power consumption analysis using time series k-means clustering to identify machine usage patterns."
+      ]
+    },
+    {
+      "title": "Mechanical Designer, Intern",
+      "company": "Blackberry",
+      "link": "",
+      "location": "Waterloo, Ontario",
+      "start_date": "2014-05",
+      "end_date": "2014-08",
+      "points": [
+        "Designed a PCB space analysis algorithm using ImageJ, enhanced with decision trees for accurate component classification and segmentation.",
+        "Engineered a high-resolution PCB imaging system using image stitching, improving inspection accuracy and efficiency."
+      ]
+    },
+    
+    {
+      "title": "Mechanical Designer, Intern",
+      "company": "Blackberry",
+      "link": "",
+      "location": "Ottawa, Ontario",
+      "start_date": "2013-09",
+      "end_date": "2013-12",
+      "points": [
+        "Managed top-level assembly and created 2D drawings and BOMs for sub-assemblies.",
+        "Performed 3D surface modeling of antenna traces and design of assembly jigs.",
+        "Designed a prototype of a side-key protection tape to ensure the part is delivered intact.",
+        "Supported Finite Element Analysis (FEA) by providing simplified part meshes.",
+        "Performed interference check regularly and provided feedback to senior mechanical designers and electrical engineers to ensure seamless integration of subsystems."
+      ]
+    },
+    {
+      "title": "Controls Designer, Intern",
+      "company": "General Motors",
+      "link": "",
+      "location": "St. Catharines, Ontario",
+      "start_date": "2013-01",
+      "end_date": "2013-04",
+      "points": [
+        "Enhanced HMI software and PLC logic for manual control of an AGV, conveyors, and fault messaging systems.",
+        "Modified DDE server software and integrated line monitoring with PLC and MySQL to incorporate new machines.",
+        "Developed a Visual Basic application to prioritize fault messages and notify technicians."
+      ]
+    },
+    {
+      "title": "Software Verification, Intern",
+      "company": "Honeywell Aerospace",
+      "link": "",
+      "location": "Kanata, Ontario",
+      "start_date": "2012-05",
+      "end_date": "2012-08",
+      "points": [
+        "Automated Hardware-In-the-Loop (HIL) test cases for satellite communication software."
+      ]
     }
+  ],
+  "Education": {
+    "School": "University of Waterloo",
+    "Link": "https://uwaterloo.ca/future-students/programs/mechatronics-engineering/",
+    "Degree": "B.AS. Honours Mechatronics Engineering Co-op",
+    "Location": "Waterloo, Ontario",
+    "date": "2015-05"
+  },
+  "Skills": {
+    "Computer Vision \\& Machine Learning": [
+      "Object detection",
+      "Instance Segmentation",
+      "Tracking",
+      "Pose Estimation",
+      "3D Reconstruction",
+      "OpenCV",
+      "Open3D",
+      "PCL",
+      "PyTorch"
+    ],
+    "Manipulation": [
+      "Motion Planning",
+      "Sensor Fusion",
+      "Behavior Trees",
+      "Finite State Machines",
+      "PDDL",
+      "Visual Servoing",
+      "Force Control"
+    ],
+    "Programming": [
+      "C++",
+      "Python",
+      "Robot Operating System (ROS)"
+    ],
+    "Simulation": [
+      "Unity",
+      "Nvidia Isaac",
+      "Gazebo",
+      "MATLAB"
+    ],
+    "Dev \\& Cloud": [
+      "Linux",
+      "Git",
+      "CI/CD",
+      "Ansible",
+      "Docker",
+      "AWS",
+      "FastAPI",
+      "RPC",
+      "REST",
+      "MongoDB",
+      "MySQL",
+      "GraphQL"
+    ]
+  },
+  "Publications": [
+    "Kwon M., [et al] (2018) A Robotic System for Autonomous Grasping and Manipulation. In: Sun Y., Falco J. (eds) Robotic Grasping and Manipulation 2016.",
+    "Liu S., [et al, Kwon M.] (2017) Grasp quality evaluation and planning for objects with negative curvature."
+  ]
 }
