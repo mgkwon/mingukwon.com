@@ -6,10 +6,7 @@ import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
 
 import Globe from 'react-globe.gl';
 
-const polygonsMaterial = new MeshLambertMaterial({ color: 'darkslategrey', side: DoubleSide });
-const globeMaterial = new MeshLambertMaterial({color: 'rgb(18, 52, 88)'})
-
-export default function GlobeView({ focus, locations }) {
+export default function GlobeView({ focus, locations, dimensions}) {
   const [landPolygons, setLandPolygons] = useState([]);
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState();
@@ -17,6 +14,13 @@ export default function GlobeView({ focus, locations }) {
 
   const validISOs = useMemo(() => new Set(locations.map(loc => loc.ISO_A2)), [locations]);
   const highlightedCountries = countries.features.filter(d => validISOs.has(d.properties.ISO_A2));
+  const restOfCountries = countries.features.filter(d => !validISOs.has(d.properties.ISO_A2));
+
+  function getColorFromVar(variableName, alpha) {
+    return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
+  }
+
+  const globeMaterial = new MeshLambertMaterial({color: getColorFromVar("--ocean-color")})
 
   // Focus the globe on the selected location
   useEffect(() => {
@@ -53,28 +57,29 @@ export default function GlobeView({ focus, locations }) {
     return locations.map(loc => ({
       ...loc,
       size: focus && focus.name === loc.name ? 0.5 : 0.0,
-      color: focus && focus.name === loc.name ? '#9BEC00' : '#1E212D'
+      color: focus && focus.name === loc.name ? getColorFromVar("--primary-color") : getColorFromVar("--primary-color")
     }));
   }, [locations, focus]);
 
   return (
     <Globe
       ref={globeRef}
-      width={window.innerWidth - 200} // Adjust based on sidebar width
-      height={window.innerHeight}
+      width={dimensions.width - 400} // assuming your sidebar is 300px
+      height={dimensions.height}
       globeMaterial={globeMaterial}
-      backgroundColor="#FAF3E0"
+      backgroundColor={getColorFromVar("--background-color")}
       showGlobe={true}
       showAtmosphere={false}
 
       // Country polygons
-      polygonsData={[...landPolygons, ...highlightedCountries]}
+      // polygonsData={[...landPolygons, ...highlightedCountries]}
+      polygonsData={[...restOfCountries, ...highlightedCountries]}
       polygonCapColor={(d) =>
-        validISOs.has(d.properties?.ISO_A2) ? '#1E212D' : '#B17F59'
+        validISOs.has(d.properties?.ISO_A2) ? getColorFromVar("--secondary-color") : getColorFromVar("--land-color")
       }
       polygonAltitude={(d) =>
-        validISOs.has(d.properties?.ISO_A2) ? 0.01 : 0.005}
-      polygonStrokeColor={() => '#EAD196'}
+        validISOs.has(d.properties?.ISO_A2) ? 0.012 : 0.006}
+      polygonStrokeColor={() => getColorFromVar("--tertiary-color")}
       polygonsTransitionDuration={300}
 
       // Location points

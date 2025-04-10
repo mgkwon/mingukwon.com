@@ -1,11 +1,21 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-faimly: "Lora", serif;
+  --background-color: #FBF8EF;
+  --ocean-color: #123458;
+  --land-color: #B17F59;
+  --primary-color: #9BEC00;
+  --secondary-color: #1E212D;
+  --tertiary-color: #EAD196;
+  --text-color: #000000;
+  --link-hover-color: #020202;
+
+  font-family: var(--font-faimly);
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-color);
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

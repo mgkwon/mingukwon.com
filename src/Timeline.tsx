@@ -23,7 +23,7 @@
       locations: Location[];
     };
 
-    const Timeline: React.FC<Props> = ({ locations, focused, setFocused }) => {
+    const Timeline: React.FC<Props> = ({ locations, focused, setFocused, dimensions }) => {
       const containerRef = useRef<HTMLDivElement>(null);
       const [virtualScrollY, setVirtualScrollY] = useState(0);
       const [progressHeight, setProgressHeight] = useState(0);
@@ -51,7 +51,7 @@
       const timelineData = useMemo(() => {
         if (yearGroups.length === 0) return [];
 
-        const totalHeight = window.innerHeight - 80; // Adjust for padding
+        const totalHeight = dimensions.height - 80; // Adjust for padding
 
         // Find the min and max years to calculate the total time span
         const maxYear = yearGroups[0].year;
@@ -77,7 +77,7 @@
             positionY
           };
         });
-      }, [yearGroups]);
+      }, [yearGroups, dimensions]);
 
       // Find currently focused year group
       const focusedYearGroup = useMemo(() => {
@@ -150,6 +150,18 @@
                     <div className="timeline-label">
                       <strong>{yearGroup.year}</strong>
                     </div>
+                    {isFocused && (
+                      <div className="timeline-job-pill">
+                        {yearGroup.locations
+                          .filter(loc => loc.job)
+                          .map((loc, i) => (
+                            <span key={i}>
+                              {loc.job}
+                              {i < yearGroup.locations.filter(l => l.job).length - 1 && ', '}
+                            </span>
+                          ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               );

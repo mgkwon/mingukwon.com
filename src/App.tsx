@@ -6,6 +6,10 @@ import './App.css';
 export default function App() {
   const [locations, setLocations] = useState([]);
   const [focused, setFocused] = useState(null);
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
   // Fetch locations on mount
   useEffect(() => {
@@ -24,15 +28,28 @@ export default function App() {
     }
   }, [locations]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="app-container">
       {focused && <Timeline
         locations={locations}
         focused={focused}
         setFocused={setFocused}
+        dimensions={dimensions}
       />}
       <div className="globe-container">
-        <GlobeView focus={focused} locations={locations} />
+        <GlobeView focus={focused} locations={locations} dimensions={dimensions} />
       </div>
     </div>
   );
